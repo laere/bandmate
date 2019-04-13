@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
@@ -32,19 +33,17 @@ const userSchema = new Schema({
 });
 
 userSchema.pre("save", function(next) {
-  // If document is new or we're changing the password
-  if (userSchema.isNew || userSchema.isModified("password")) {
-    // ref this because we're changing scope
-    const document = this;
-
-    bcrypt.hash(document.password, 10, function(err, hashedPassword) {
+  bcrypt.hash(
+    this.password,
+    10,
+    function hashPassword(err, hashedPassword) {
       if (err) next(err);
+      this.password = hashedPassword;
+      // binding the user obj as context to hashPassword func
+    }.bind(this)
+  );
 
-      document.password = hashedPassword;
-    });
-  } else {
-    next();
-  }
+  next();
 });
 
 const User = mongoose.model("User", userSchema);

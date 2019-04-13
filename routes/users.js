@@ -1,24 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bycrypt");
+const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const validateUser = require("../validation/userValidation");
 
 // @route   GET api/users/test
 // @desc    Tests users route
 // @access  Public
-router.get("/", (req, res, next) => res.json({ msg: "Hello this is a test" }));
-
-// @route   GET api/users/current_user
-// @desc    Get curent user
-// @access  Public
-router.get("/current_user", async (req, res, next) => {
-  const user = await User.findOne({ _id: user.req.id });
-
-  if (!user) return res.status(404).json({ msg: "User not found" });
-
-  res.json(user);
-});
+router.get("/test", (req, res, next) =>
+  res.json({ msg: "Hello this is a test" })
+);
 
 // @route   POST api/users/register
 // @desc    Register a user
