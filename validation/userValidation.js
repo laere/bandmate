@@ -10,7 +10,7 @@ function validateUser(user) {
       email: Joi.string()
         .min(2)
         .max(50)
-        .email()
+        .email({ minDomainAtoms: 2 })
         .required(),
       password: Joi.string()
         .min(6)
