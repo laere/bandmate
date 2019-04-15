@@ -4,6 +4,7 @@
   "description": "social media project",
   "main": "server.js",
   "scripts": {
+    "test": "jest --colors --watchAll",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm run start --prefix client",
@@ -24,5 +25,9 @@
     "lodash": "^4.17.11",
     "mongoose": "^5.4.19",
     "nodemon": "^1.18.10"
+  },
+  "devDependencies": {
+    "jest": "^24.7.1",
+    "supertest": "^4.0.2"
   }
 }

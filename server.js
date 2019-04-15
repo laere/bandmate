@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/api/users", users);
-//app.use("/api/profiles", profiles);
+app.use("/api/profiles", profiles);
 
 app.use(function(err, req, res, next) {
   console.error(err.statusCode, err.message);

@@ -18,13 +18,13 @@ const instrumentSchema = new Schema({
     required: true
   },
   typeOfInstrument: {
-    name: String,
+    type: String,
     minlength: 2,
     maxlength: 50,
     required: true
   },
   typeOfPlaying: {
-    name: String,
+    type: String,
     minlength: 2,
     maxlength: 50
   },
