@@ -24,6 +24,8 @@ describe("user model", () => {
     });
 
     expect.objectContaining(user);
-    expect(user).toHaveProperty("username", "email", "password");
+    expect(user).toHaveProperty("username", "zack");
+    expect(user).toHaveProperty("email", "123@123.com");
+    expect(user).toHaveProperty("password", "123456");
   });
 });
