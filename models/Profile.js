@@ -107,6 +107,34 @@ const educationSchema = new Schema({
   }
 });
 
+const socialSchema = new Schema({
+  youtube: {
+    type: String,
+    minlength: 2,
+    maxlength: 50
+  },
+  facebook: {
+    type: String,
+    minlength: 2,
+    maxlength: 50
+  },
+  twitter: {
+    type: String,
+    minlength: 2,
+    maxlength: 50
+  },
+  instagram: {
+    type: String,
+    minlength: 2,
+    maxlength: 50
+  },
+  linkedin: {
+    type: String,
+    minlength: 2,
+    maxlength: 50
+  }
+});
+
 const profileSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
@@ -119,13 +147,13 @@ const profileSchema = new Schema({
     minlength: 2,
     maxlength: 50
   },
-  email: {
-    type: String,
-    minlength: 2,
-    maxlength: 50,
-    required: true,
-    unique: true
-  },
+  // email: {
+  //   type: String,
+  //   minlength: 2,
+  //   maxlength: 50,
+  //   required: true,
+  //   unique: true
+  // },
   gender: {
     type: String
   },
@@ -142,6 +170,7 @@ const profileSchema = new Schema({
   instruments: [instrumentSchema], // schema
   experience: [experienceSchema], // schema
   education: [educationSchema], // schema
+  social: socialSchema,
   dateCreated: {
     type: Date,
     default: Date.now
