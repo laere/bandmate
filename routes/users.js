@@ -37,8 +37,13 @@ router.post(
       d: "mm" // Default
     });
 
-    // check if user already exists.
-    let user = await User.findOne({ email });
+    // check if username already exists.
+    // let user = await User.findOne({ username });
+    //
+    // if (user) next(errors.processReq);
+
+    // check if user email already exists.
+    user = await User.findOne({ email });
 
     if (user) next(errors.processReq);
 
@@ -62,22 +67,22 @@ router.post(
 
     let user = await User.findOne({ email });
 
-    if (!user) next(errors.userNotFound);
+    if (!user) next(errors.processReq);
 
     const validPassword = await bcrypt.compare(password, user.password);
 
-    if (!validPassword) next(errors.passwordIncorrect);
+    if (!validPassword) next(errors.processReq);
 
     const token = user.generateAuthToken();
-    
-    res.send(`Bearer ${token}`)
+
+    res.send(`Bearer ${token}`);
   })
 );
 
 router.get(
   "/current_user",
   myAsync(async (req, res, next) => {
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ user: req.user.id });
 
     if (!user) next(errors.userNotFound);
 
@@ -85,16 +90,21 @@ router.get(
   })
 );
 
-router.delete("/", passport.authenticate('jwt', { session: false }), async (req, res, next) => {
-  // find and delete profile first
-  let profile = Profile.findOneAndRemove({ email: req.body.email });
+router.delete(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res, next) => {
+    // find and delete profile first
+    let profile = Profile.findOneAndRemove({ user: req.user.id });
 
-  if (!profile) next(errors.processReq);
-  // find and delete user afterwards
-  let user = User.findOneAndRemove({ email: req.body.email });
+    if (!profile) next(errors.processReq);
+    // find and delete user afterwards
+    let user = User.findOneAndRemove({ user: req.user.id });
 
-  await Promise.all([profile, user]);
-  res.send([profile, user]);
-});
+    await Promise.all([profile, user]);
+
+    res.send([profile, user]);
+  }
+);
 
 module.exports = router;

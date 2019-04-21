@@ -15,11 +15,12 @@ router.post(
     const { error } = validateName(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    console.log(req.body);
-
     let profile = await Profile.findOne({ user: req.user.id });
 
-    profile.favoriteBands.push(req.body);
+    // If that band already exists exit request.
+    if (profile.favoriteGenres.includes(req.body)) return;
+
+    profile.favoriteGenres.push(req.body);
 
     await profile.save();
 
@@ -28,11 +29,11 @@ router.post(
 );
 
 router.delete(
-  "/:bandId",
+  "/:genreId",
   myAsync(async (req, res, next) => {
     let profile = await Profile.findOne({ user: req.user.id });
 
-    let band = profile.favoriteBands.id(req.params.bandId);
+    let band = profile.favoriteGenres.id(req.params.bandId);
 
     band.remove();
 

@@ -8,6 +8,7 @@ const userSchema = new Schema({
   username: {
     type: String,
     required: true,
+    unique: true,
     minlength: 2,
     maxlength: 50
   },
@@ -48,7 +49,9 @@ userSchema.pre("save", function(next) {
 });
 
 userSchema.methods.generateAuthToken = function() {
-  const token = jwt.sign({ id: this.id }, keys.secretOrKey, { expiresIn: 3600 * 24 });
+  const token = jwt.sign({ id: this.id }, keys.secretOrKey, {
+    expiresIn: 3600 * 24
+  });
   return token;
 };
 
