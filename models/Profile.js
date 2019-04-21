@@ -143,17 +143,9 @@ const profileSchema = new Schema({
   username: {
     type: String,
     required: true,
-    unique: true,
     minlength: 2,
     maxlength: 50
   },
-  // email: {
-  //   type: String,
-  //   minlength: 2,
-  //   maxlength: 50,
-  //   required: true,
-  //   unique: true
-  // },
   gender: {
     type: String
   },

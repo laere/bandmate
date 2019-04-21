@@ -10,7 +10,7 @@ const validateUser = require("../validation/userValidation");
 const validateLogin = require("../validation/loginValidation");
 const errors = require("../errors/errors");
 const myAsync = require("../middleware/async");
-const auth = require("../middleware/auth");
+const passport = require("passport");
 
 // @route   GET api/users/test
 // @desc    Tests users route
@@ -47,11 +47,7 @@ router.post(
 
     await user.save();
 
-    const token = user.generateAuthToken();
-
-    res
-      .header("x-auth-token", token)
-      .send(_.pick(user, ["_id", "username", "email"]));
+    res.send(_.pick(user, ["_id", "username", "email", "avatar"]));
   })
 );
 
@@ -73,8 +69,8 @@ router.post(
     if (!validPassword) next(errors.passwordIncorrect);
 
     const token = user.generateAuthToken();
-
-    res.send(token);
+    
+    res.send(`Bearer ${token}`)
   })
 );
 
@@ -89,7 +85,7 @@ router.get(
   })
 );
 
-router.delete("/", auth, async (req, res, next) => {
+router.delete("/", passport.authenticate('jwt', { session: false }), async (req, res, next) => {
   // find and delete profile first
   let profile = Profile.findOneAndRemove({ email: req.body.email });
 
