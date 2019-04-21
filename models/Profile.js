@@ -146,6 +146,11 @@ const profileSchema = new Schema({
     minlength: 2,
     maxlength: 50
   },
+  email: {
+    type: String,
+    minlength: 2,
+    maxlength: 50
+  },
   gender: {
     type: String
   },

@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
 const passport = require('passport')
+const passportAuth = passport.authenticate("jwt", { session: false });
 // const errorHandler = require("./middleware/error");
 const app = express();
 
@@ -24,8 +25,8 @@ app.use(bodyParser.json());
 require("./config/passport")(passport);
 
 app.use("/api/users", users);
-app.use("/api/profiles", profiles);
-app.use("/api/profiles", favoriteBands);
+app.use("/api/profiles", passportAuth, profiles);
+app.use("/api/profiles", passportAuth, favoriteBands);
 
 app.use(function(err, req, res, next) {
   console.error(err.statusCode, err.message);
