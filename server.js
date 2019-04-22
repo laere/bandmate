@@ -12,6 +12,9 @@ const users = require("./routes/users");
 const profiles = require("./routes/profiles");
 const favoriteBands = require("./routes/favoriteBands");
 const favoriteGenres = require("./routes/favoriteGenres");
+const instruments = require("./routes/instruments");
+const education = require("./routes/education");
+const experience = require("./routes/experience");
 
 mongoose.connect(
   keys.mongoURI,
@@ -29,11 +32,14 @@ app.use("/api/users", users);
 app.use("/api/profiles", passportAuth, profiles);
 app.use("/api/profiles/favorites/bands", passportAuth, favoriteBands);
 app.use("/api/profiles/favorites/genres", passportAuth, favoriteGenres);
+app.use("/api/profiles/instruments", passportAuth, instruments);
+// app.use("/api/profiles/education", passportAuth, education);
+// app.use("/api/profiles/experience", passportAuth, experience);
 
-app.use(function(err, req, res, next) {
-  console.error(err.statusCode, err.message);
-  res.status(err.statusCode).send(err.message);
-});
+// app.use(function(err, req, res, next) {
+//   console.error(err.statusCode, err.message);
+//   res.status(err.statusCode).send(err.message);
+// });
 
 // Only ran inside production (in heroku)
 if (process.env.NODE_ENV === "production") {

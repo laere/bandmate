@@ -56,6 +56,9 @@ router.post(
   })
 );
 
+// @route   POST api/users/login
+// @desc    Login a user
+// @access  Public
 router.post(
   "/login",
   myAsync(async (req, res, next) => {
@@ -79,8 +82,12 @@ router.post(
   })
 );
 
+// @route   GET api/users/current_user
+// @desc    Get current user
+// @access  Private
 router.get(
   "/current_user",
+  passport.authenticate("jwt", { session: false }),
   myAsync(async (req, res, next) => {
     const user = await User.findOne({ user: req.user.id });
 
@@ -90,8 +97,11 @@ router.get(
   })
 );
 
+// @route   Delete api/users/current_user
+// @desc    User wants to delete their account.
+// @access  Public
 router.delete(
-  "/",
+  "/current_user",
   passport.authenticate("jwt", { session: false }),
   async (req, res, next) => {
     // find and delete profile first

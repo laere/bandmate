@@ -7,13 +7,14 @@ function validateInstrument(instrument) {
         .min(2)
         .max(50)
         .required(),
-      typeOfInstrument: Joi.string()
+      kindOfInstrument: Joi.string()
         .min(2)
         .max(50)
         .required(),
       typeOfPlaying: Joi.string()
         .min(2)
-        .max(50),
+        .max(50)
+        .required(),
       timePlayed: Joi.string()
         .min(2)
         .max(50)

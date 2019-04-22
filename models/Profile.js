@@ -14,14 +14,12 @@ const instrumentSchema = new Schema({
   instrument: {
     type: String,
     minlength: 2,
-    maxlength: 50,
-    required: true
+    maxlength: 50
   },
-  typeOfInstrument: {
+  kindOfInstrument: {
     type: String,
     minlength: 2,
-    maxlength: 50,
-    required: true
+    maxlength: 50
   },
   typeOfPlaying: {
     type: String,
@@ -29,8 +27,13 @@ const instrumentSchema = new Schema({
     maxlength: 50
   },
   timePlayed: {
-    type: Number,
-    required: true
+    type: String,
+    minlength: 2,
+    maxlength: 50
+  },
+  dateCreated: {
+    type: Date,
+    default: Date.now
   }
 });
 
