@@ -8,8 +8,6 @@ const Profile = require("../models/Profile");
 router.post(
   "/",
   myAsync(async (req, res, next) => {
-    console.log(req.body);
-
     const { error } = validateInstrument(req.body);
     if (error) {
       res.status(400).send(error.details[0].message);
@@ -40,6 +38,38 @@ router.delete(
     if (!instrument) next(errors.processReq);
 
     instrument.remove();
+
+    await profile.save();
+
+    res.send(profile);
+  })
+);
+
+router.put(
+  "/:instrumentId",
+  myAsync(async (req, res, nex) => {
+    const { error } = validateInstrument(req.body);
+    if (error) {
+      res.status(400).send(error.details[0].message);
+      next();
+    }
+
+    let profile = await Profile.findOneAndUpdate(
+      {
+        user: req.user.id,
+        "instruments._id": req.params.instrumentId
+      },
+      {
+        $set: {
+          "instruments.$": req.body
+        }
+      },
+      {
+        new: true
+      }
+    );
+
+    if (!profile) next(errors.processReq);
 
     await profile.save();
 
