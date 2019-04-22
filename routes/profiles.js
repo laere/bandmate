@@ -21,7 +21,7 @@ router.get(
   "/",
   myAsync(async (req, res, next) => {
     let profile = await Profile.findOne({ user: req.user.id });
-    console.log(profile);
+
     if (!profile) next(errors.processReq);
 
     res.send(profile);
@@ -65,15 +65,14 @@ router.put(
     const { error } = validateProfile(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    const profileFields = { ...req.body };
-
     let profile = await Profile.findOneAndUpdate(
       { user: req.user.id },
-      { $set: profileFields },
+      { $set: req.body },
       { new: true }
     );
 
     await profile.save();
+
     res.send(profile);
   })
 );
