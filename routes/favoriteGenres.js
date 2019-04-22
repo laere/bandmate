@@ -33,9 +33,9 @@ router.delete(
   myAsync(async (req, res, next) => {
     let profile = await Profile.findOne({ user: req.user.id });
 
-    let band = profile.favoriteGenres.id(req.params.bandId);
+    let genre = profile.favoriteGenres.id(req.params.genreId);
 
-    band.remove();
+    genre.remove();
 
     await profile.save();
 
