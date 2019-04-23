@@ -2,8 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
+const cookieSession = require("cookie-session");
+const session = require("express-session");
 const passport = require("passport");
-const passportAuth = passport.authenticate("jwt", { session: false });
+const passportAuth = passport.authenticate("jwt", { session: true });
+require("./config/passport");
 // const errorHandler = require("./middleware/error");
 const app = express();
 
@@ -24,9 +27,19 @@ mongoose.connect(
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(
+  session({ secret: keys.secretOrKey, resave: false, saveUninitialized: true })
+);
 
-// Passport Config
-require("./config/passport")(passport);
+// app.use(
+//   cookieSession({
+//     maxAge: 30 * 24 * 60 * 60 * 1000,
+//     keys: [keys.cookieKey]
+//   })
+// );
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/api/users", users);
 app.use("/api/profiles", passportAuth, profiles);

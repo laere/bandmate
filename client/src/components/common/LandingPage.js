@@ -15,7 +15,9 @@ class LandingPage extends React.Component {
             <Link to="/register" class="button is-normal">
               Sign Up
             </Link>
-            <a class="button is-normal">Log In</a>
+            <Link to="/login" class="button is-normal">
+              Log In
+            </Link>
           </div>
         </div>
         <div className="hero-footer" />

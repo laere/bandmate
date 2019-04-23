@@ -78,11 +78,7 @@ router.post(
 
     const token = user.generateAuthToken();
 
-    res
-      .header("Authorization", `Bearer ${token}`)
-      .send(_.pick(user, ["_id", "username", "email", "avatar"]));
-
-    // res.send(`Bearer ${token}`);
+    res.send(`Bearer ${token}`);
   })
 );
 
@@ -94,6 +90,8 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   myAsync(async (req, res, next) => {
     const user = await User.findOne({ user: req.user.id });
+
+    console.log(user);
 
     if (!user) next(errors.userNotFound);
 
