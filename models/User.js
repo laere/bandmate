@@ -50,7 +50,7 @@ userSchema.pre("save", function(next) {
 
 userSchema.methods.generateAuthToken = function() {
   const token = jwt.sign({ id: this.id }, keys.secretOrKey, {
-    expiresIn: 3600 * 24
+    expiresIn: 3600
   });
   return token;
 };

@@ -16,44 +16,44 @@ const instrumentSchema = new Schema({
     minlength: 2,
     maxlength: 50
   },
-  kindOfInstrument: {
+  instrumenttype: {
     type: String,
     minlength: 2,
     maxlength: 50
   },
-  typeOfPlaying: {
+  playingstyle: {
     type: String,
     minlength: 2,
     maxlength: 50
   },
-  timePlayed: {
+  timeplayed: {
     type: String,
     minlength: 2,
     maxlength: 50
   },
-  dateCreated: {
+  datecreated: {
     type: Date,
     default: Date.now
   }
 });
 
 const experienceSchema = new Schema({
-  bandName: {
+  bandname: {
     type: String,
     minlength: 2,
     maxlength: 50
   },
-  bandWebsite: {
+  bandwebsite: {
     type: String,
     minlength: 2,
     maxlength: 50
   },
-  timePlayedWith: {
+  timeplayedwith: {
     type: String,
     minlength: 2,
     maxlength: 50
   },
-  instrumentsPlayed: {
+  instrumentsplayed: {
     type: [String],
     minlength: 2,
     maxlength: 50
@@ -161,13 +161,13 @@ const profileSchema = new Schema({
     minlength: 2,
     maxlength: 255
   },
-  favoriteBands: [nameSchema],
-  favoriteGenres: [nameSchema],
+  favoritebands: [nameSchema],
+  favoritegenres: [nameSchema],
   instruments: [instrumentSchema], // schema
   experience: [experienceSchema], // schema
   education: [educationSchema], // schema
   social: socialSchema,
-  dateCreated: {
+  datecreated: {
     type: Date,
     default: Date.now
   }

@@ -78,7 +78,11 @@ router.post(
 
     const token = user.generateAuthToken();
 
-    res.send(`Bearer ${token}`);
+    res
+      .header("Authorization", `Bearer ${token}`)
+      .send(_.pick(user, ["_id", "username", "email", "avatar"]));
+
+    // res.send(`Bearer ${token}`);
   })
 );
 

@@ -48,11 +48,19 @@ router.delete(
 router.put(
   "/:educationId",
   myAsync(async (req, res, next) => {
+    const { error } = validateEducation(req.body);
+    if (error) {
+      res.status(400).send(error.details[0].message);
+      next();
+    }
+
     let profile = await Profile.findOneAndUpdate({ user: req.user.id });
 
     if (!profile) next(errors.processReq);
 
     let education = profile.education.id(req.params.educationId);
+
+    if (!education) next(errors.processReq);
 
     education.set(req.body);
 

@@ -20,7 +20,7 @@ router.post(
 
     const experienceProps = {
       ...req.body,
-      instrumentsPlayed: req.body.instrumentsPlayed.split(",")
+      instrumentsplayed: req.body.instrumentsplayed.split(",")
     };
 
     profile.experience.push(experienceProps);
