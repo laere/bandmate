@@ -48,20 +48,13 @@ router.delete(
 router.put(
   "/:educationId",
   myAsync(async (req, res, next) => {
-    let profile = await Profile.findOneAndUpdate(
-      {
-        user: req.user.id,
-        "education._id": req.params.educationId
-      },
-      {
-        $set: {
-          "education.$": req.body
-        }
-      },
-      { new: true }
-    );
+    let profile = await Profile.findOneAndUpdate({ user: req.user.id });
 
     if (!profile) next(errors.processReq);
+
+    let education = profile.education.id(req.params.educationId);
+
+    education.set(req.body);
 
     await profile.save();
 

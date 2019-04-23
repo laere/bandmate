@@ -18,7 +18,12 @@ router.post(
 
     if (!profile) next(errors.processReq);
 
-    profile.experience.push(req.body);
+    const experienceProps = {
+      ...req.body,
+      instrumentsPlayed: req.body.instrumentsPlayed.split(",")
+    };
+
+    profile.experience.push(experienceProps);
 
     await profile.save();
 
@@ -46,12 +51,19 @@ router.delete(
 router.put(
   "/:experienceId",
   myAsync(async (req, res, next) => {
-    let profile = await Profile.findOneAndUpdate(
-      { user: req.user.id, "experience._id": req.params.experienceId },
-      { $set: { "experience.$": req.body } },
-      { new: true }
-    );
+    const { error } = validateExperience(req.body);
+    if (error) {
+      res.status(400).send(error.details[0].message);
+      next();
+    }
+
+    let profile = await Profile.findOne({ user: req.user.id });
+
     if (!profile) next(errors.processReq);
+
+    let experience = profile.experience.id(req.params.experienceId);
+
+    experience.set(req.body);
 
     await profile.save();
 

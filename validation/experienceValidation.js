@@ -3,7 +3,7 @@ const Joi = require("joi");
 function validateExperience(experience) {
   const schema = Joi.object()
     .keys({
-      baneName: Joi.string()
+      bandName: Joi.string()
         .min(2)
         .max(50)
         .required(),
@@ -20,8 +20,7 @@ function validateExperience(experience) {
         .required(),
       description: Joi.string()
         .min(2)
-        .max(255)
-        .required(),
+        .max(255),
       current: Joi.boolean().required()
     })
     .unknown();

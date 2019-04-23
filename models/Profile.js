@@ -40,7 +40,6 @@ const instrumentSchema = new Schema({
 const experienceSchema = new Schema({
   bandName: {
     type: String,
-    required: true,
     minlength: 2,
     maxlength: 50
   },
@@ -51,25 +50,22 @@ const experienceSchema = new Schema({
   },
   timePlayedWith: {
     type: String,
-    required: true,
     minlength: 2,
     maxlength: 50
   },
   instrumentsPlayed: {
     type: [String],
-    required: true,
     minlength: 2,
     maxlength: 50
   },
   description: {
     type: String,
-    required: true,
     minlength: 2,
     maxlength: 255
   },
   current: {
     type: Boolean,
-    required: true
+    default: false
   }
 });
 

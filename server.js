@@ -33,8 +33,8 @@ app.use("/api/profiles", passportAuth, profiles);
 app.use("/api/profiles/favorites/bands", passportAuth, favoriteBands);
 app.use("/api/profiles/favorites/genres", passportAuth, favoriteGenres);
 app.use("/api/profiles/instruments", passportAuth, instruments);
-// app.use("/api/profiles/education", passportAuth, education);
-// app.use("/api/profiles/experience", passportAuth, experience);
+app.use("/api/profiles/education", passportAuth, education);
+app.use("/api/profiles/experience", passportAuth, experience);
 
 // app.use(function(err, req, res, next) {
 //   console.error(err.statusCode, err.message);

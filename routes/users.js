@@ -105,15 +105,15 @@ router.delete(
   passport.authenticate("jwt", { session: false }),
   async (req, res, next) => {
     // find and delete profile first
-    let profile = Profile.findOneAndRemove({ user: req.user.id });
+    let profile = await Profile.findOneAndRemove({ user: req.user.id });
 
     if (!profile) next(errors.processReq);
     // find and delete user afterwards
-    let user = User.findOneAndRemove({ user: req.user.id });
+    let user = await User.findOneAndRemove({ user: req.user.id });
 
-    await Promise.all([profile, user]);
+    let promises = await Promise.all([profile, user]);
 
-    res.send([profile, user]);
+    res.send(promises);
   }
 );
 

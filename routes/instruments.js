@@ -54,22 +54,13 @@ router.put(
       next();
     }
 
-    let profile = await Profile.findOneAndUpdate(
-      {
-        user: req.user.id,
-        "instruments._id": req.params.instrumentId
-      },
-      {
-        $set: {
-          "instruments.$": req.body
-        }
-      },
-      {
-        new: true
-      }
-    );
+    let profile = await Profile.findOne({ user: req.user.id });
 
     if (!profile) next(errors.processReq);
+
+    let instrument = profile.instruments.id(req.params.instrumentId);
+
+    instrument.set(req.body);
 
     await profile.save();
 
