@@ -12,7 +12,9 @@ class LandingPage extends React.Component {
             <h2 className="subtitle">
               Create music with like-minded musicians.
             </h2>
-            <a class="button is-normal">Sign Up</a>
+            <Link to="/register" class="button is-normal">
+              Sign Up
+            </Link>
             <a class="button is-normal">Log In</a>
           </div>
         </div>

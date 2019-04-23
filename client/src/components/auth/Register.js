@@ -11,20 +11,21 @@ class Register extends React.Component {
       <div className="budget-new">
         <h1 className="title is-3">Register to start a band!</h1>
         <Formik
-          initialValues={{ name: "", email: "", password: "" }}
+          initialValues={{ username: "", email: "", password: "" }}
           validate={values => registerValidation(values)}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(false);
+            console.log("VALUES", values);
             this.props.registerUser(values, this.props.history);
           }}
         >
           {({ isSubmitting, values }) => (
             <Form>
-              <label className="label">Name:</label>
+              <label className="label">Username:</label>
               <Field
                 type="text"
-                name="name"
-                value={values.name}
+                name="username"
+                value={values.username}
                 className="input"
               />
               <ErrorMessage

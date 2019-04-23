@@ -4,6 +4,7 @@ import PrivateRoute from "components/common/PrivateRoute";
 
 import LandingPage from "components/common/LandingPage";
 import Navbar from "components/common/Navbar";
+import Register from "components/auth/Register";
 import "./App.css";
 
 class App extends React.Component {
@@ -13,7 +14,9 @@ class App extends React.Component {
         <BrowserRouter>
           <Navbar />
           <Route exact path="/" component={LandingPage} />
-          <div className="container" />
+          <div className="container">
+            <Route exact path="/register" component={Register} />
+          </div>
         </BrowserRouter>
       </div>
     );
