@@ -6,8 +6,8 @@ const cookieSession = require("cookie-session");
 const session = require("express-session");
 const passport = require("passport");
 const passportAuth = passport.authenticate("jwt", { session: true });
-require("./config/passport");
-// const errorHandler = require("./middleware/error");
+require("./config/passport")(passport);
+//require("./services/passportSpotify");
 const app = express();
 
 // ROUTE CONSTS

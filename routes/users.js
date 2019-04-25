@@ -91,8 +91,6 @@ router.get(
   myAsync(async (req, res, next) => {
     const user = await User.findOne({ user: req.user.id });
 
-    console.log(user);
-
     if (!user) next(errors.userNotFound);
 
     res.send(user);

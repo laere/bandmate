@@ -30,7 +30,8 @@
     "nodemon": "^1.18.10",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "passport-spotify": "^1.0.1"
   },
   "devDependencies": {
     "jest": "^23.6.0",
