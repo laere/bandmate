@@ -63,7 +63,7 @@ class Register extends React.Component {
 
               <button
                 type="submit"
-                className="button is-primary is-large"
+                className="button is-primary is-large button-auth"
                 style={{ marginTop: "20px" }}
                 disabled={isSubmitting}
                 onSubmit={this.onSubmit}

@@ -3,14 +3,14 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
 const cookieSession = require("cookie-session");
-const session = require("express-session");
 const passport = require("passport");
 const passportAuth = passport.authenticate("jwt", { session: true });
-require("./config/passport")(passport);
-//require("./services/passportSpotify");
 const app = express();
 
+require("./config/passport");
+
 // ROUTE CONSTS
+const auth = require("./routes/spotify");
 const users = require("./routes/users");
 const profiles = require("./routes/profiles");
 const favoriteBands = require("./routes/favoriteBands");
@@ -27,16 +27,13 @@ mongoose.connect(
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(
-  session({ secret: keys.secretOrKey, resave: false, saveUninitialized: true })
-);
 
-// app.use(
-//   cookieSession({
-//     maxAge: 30 * 24 * 60 * 60 * 1000,
-//     keys: [keys.cookieKey]
-//   })
-// );
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());

@@ -5,11 +5,19 @@ import { loginUser } from "actions/authActions";
 import { withRouter } from "react-router-dom";
 import loginValidation from "validation/loginValidation";
 
-class Register extends React.Component {
+class Login extends React.Component {
+  componentDidUpdate() {
+    const { isAuthenticated } = this.props.auth;
+
+    if (isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
   render() {
     return (
       <div className="budget-new">
-        <h1 className="title is-3">Register to start a band!</h1>
+        <h1 className="title is-3">Login to start a band!</h1>
         <Formik
           initialValues={{ email: "", password: "" }}
           validate={values => loginValidation(values)}
@@ -47,10 +55,9 @@ class Register extends React.Component {
                 component="div"
                 style={{ fontSize: "24px" }}
               />
-
               <button
                 type="submit"
-                className="button is-primary is-large"
+                className="button is-primary is-large button-auth"
                 style={{ marginTop: "20px" }}
                 disabled={isSubmitting}
                 onSubmit={this.onSubmit}
@@ -65,7 +72,11 @@ class Register extends React.Component {
   }
 }
 
+const mapStateToProps = ({ auth }) => {
+  return { auth };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { loginUser }
-)(withRouter(Register));
+)(withRouter(Login));

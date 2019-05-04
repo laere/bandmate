@@ -23,11 +23,39 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.landing-page {
+  background-image: url("https://freedesignfile.com/upload/2016/11/The-blue-light-shines-on-the-cheering-crowd-rock-concert-01.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.title,
+.subtitle {
+  color: white;
+}
+
+.title {
+  font-size: 60px;
+}
+
+.subtitle {
+  font-size: 28px;
+}
+
+.button {
+  margin: 0 10px;
+}
+
+.button-auth {
+  margin: 0 auto;
+  display: block;
+}
+
+.label {
+  margin: 30px;
+}
+
+.input {
+  width: 500px;
 }

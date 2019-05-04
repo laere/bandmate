@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { logoutUser } from "actions/authActions";
 
 class Navbar extends React.Component {
   renderGuestLinks() {
     return (
       <React.Fragment>
-        <Link to="/signup" className="navbar-item">
+        <Link to="/register" className="navbar-item">
           Sign Up
         </Link>
         <Link to="/login" className="navbar-item">
@@ -17,27 +18,35 @@ class Navbar extends React.Component {
   }
 
   renderAuthLinks() {
+    const { user } = this.props.auth;
     return (
       <React.Fragment>
-        <img
-          className="navbar-item"
-          src={this.props.auth.user.avatar}
-          alt="user avatar"
-        />
-        <button className="navbar-item">Log Out</button>
+        <figure className="image is-48x48">
+          <img
+            className="is-rounded"
+            src={user.avatar}
+            alt={user.name}
+            title="You must have a gravatar connected to your email to display an image"
+          />
+        </figure>
+        <Link to="/" onClick={this.props.logoutUser} className="navbar-item">
+          Log Out
+        </Link>
       </React.Fragment>
     );
   }
 
   render() {
-    const { auth } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;
     return (
-      <nav className="navbar is-info">
+      <nav className="navbar is-dark">
         <div className="navbar-start">
-          <div className="navbar-item">Bandmate</div>
+          <Link to="/" className="navbar-item">
+            Bandmate
+          </Link>
         </div>
         <div className="navbar-end">
-          {auth ? this.renderAuthLinks() : this.renderGuestLinks()}
+          {isAuthenticated ? this.renderAuthLinks() : this.renderGuestLinks()}
         </div>
       </nav>
     );
@@ -48,4 +57,7 @@ const mapStateToProps = ({ auth }) => {
   return { auth };
 };
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(Navbar);

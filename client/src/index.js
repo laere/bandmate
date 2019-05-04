@@ -7,7 +7,7 @@ import reduxThunk from "redux-thunk";
 import reducers from "reducers";
 import setAuthToken from "utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { setCurrentUser } from "actions/authActions";
+import { setCurrentUser, logoutUser } from "actions/authActions";
 
 // import * as serviceWorker from "./serviceWorker";
 
@@ -39,7 +39,7 @@ if (localStorage.jwtToken) {
 
   if (decoded.exp < currentTime) {
     // Logout user
-    //store.dispatch(logoutUser());
+    store.dispatch(logoutUser());
     // Clear current profile
     //store.dispatch(clearCurrentProfile());
     // Redirect to login
