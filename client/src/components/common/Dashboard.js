@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 class Dashboard extends React.Component {
   sidebarLinks = [
+    { name: "My Info", path: "myinfo" },
     { name: "Experience", path: "experience" },
     { name: "Education", path: "education" },
     { name: "Favorites", path: "favorites" },

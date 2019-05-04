@@ -59,6 +59,10 @@
 .input {
   width: 500px;
 }
+
+/**************************************/
+/*********DASHBOARD
+/**************************************/
 .dashboard {
   display: flex;
 }
@@ -71,10 +75,6 @@
   justify-content: center;
   flex-basis: 18%;
 }
-.content {
-  display: flex;
-  flex-direction: column;
-}
 
 .dashboard-links {
   background-color: #23d160;
@@ -84,4 +84,11 @@
   justify-content: center;
   align-items: center;
   flex: 1;
+}
+
+/**************************************/
+/*********DASHBOARD CONTENT
+/**************************************/
+
+.content {
 }
