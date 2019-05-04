@@ -41,9 +41,7 @@ class Navbar extends React.Component {
     return (
       <nav className="navbar is-dark">
         <div className="navbar-start">
-          <Link to="/" className="navbar-item">
-            Bandmate
-          </Link>
+          <div className="navbar-item">Bandmate</div>
         </div>
         <div className="navbar-end">
           {isAuthenticated ? this.renderAuthLinks() : this.renderGuestLinks()}

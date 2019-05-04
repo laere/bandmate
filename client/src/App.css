@@ -59,3 +59,29 @@
 .input {
   width: 500px;
 }
+.dashboard {
+  display: flex;
+}
+
+.sidebar {
+  background-color: lime;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-basis: 18%;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-links {
+  background-color: #23d160;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
