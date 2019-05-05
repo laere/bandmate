@@ -8,6 +8,7 @@ import reducers from "reducers";
 import setAuthToken from "utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { setCurrentUser, logoutUser } from "actions/authActions";
+import { clearCurrentProfile } from "actions/profileActions";
 
 // import * as serviceWorker from "./serviceWorker";
 
@@ -41,7 +42,7 @@ if (localStorage.jwtToken) {
     // Logout user
     store.dispatch(logoutUser());
     // Clear current profile
-    //store.dispatch(clearCurrentProfile());
+    store.dispatch(clearCurrentProfile());
     // Redirect to login
     window.location.href = "/login";
   }

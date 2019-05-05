@@ -4,7 +4,7 @@ import { createProfile } from "actions/profileActions";
 import { Link, withRouter } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-class AddInfo extends React.Component {
+class AddEducation extends React.Component {
   render() {
     const { username } = this.props.auth.user;
     return (
@@ -92,4 +92,4 @@ const mapStateToProps = ({ auth }) => {
 export default connect(
   mapStateToProps,
   { createProfile }
-)(withRouter(AddInfo));
+)(withRouter(AddEducation));

@@ -1,4 +1,8 @@
-import { IS_LOADING, FETCH_PROFILE } from "actions/types";
+import {
+  IS_LOADING,
+  FETCH_PROFILE,
+  CLEAR_CURRENT_PROFILE
+} from "actions/types";
 
 const initialState = {
   isLoading: false,
@@ -17,6 +21,11 @@ export default (state = initialState, action) => {
         ...state,
         isLoading: false,
         profile: action.payload || {}
+      };
+    case CLEAR_CURRENT_PROFILE:
+      return {
+        ...state,
+        profile: {}
       };
     default:
       return state;

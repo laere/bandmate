@@ -3,3 +3,4 @@ export const IS_LOADING = "IS_LOADING";
 
 export const FETCH_PROFILE = "FETCH_PROFILE";
 export const SET_PROFILE = "SET_PROFILE";
+export const CLEAR_CURRENT_PROFILE = "CLEAR_CURRENT_PROFILE";

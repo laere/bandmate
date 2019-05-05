@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ContentHeader = props => {
+const MyInfoHeader = props => {
   return (
     <React.Fragment>
       <h1>{props.header}</h1>
@@ -9,9 +9,12 @@ const ContentHeader = props => {
         <Link to={props.addpath} className="button is-info">
           {props.btnadd}
         </Link>
+        <Link to={props.editpath} className="button is-info">
+          {props.btnedit}
+        </Link>
       </div>
     </React.Fragment>
   );
 };
 
-export default ContentHeader;
+export default MyInfoHeader;

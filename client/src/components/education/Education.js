@@ -1,9 +1,17 @@
 import React from "react";
-import Content from "components/dashboard/Content";
+import ContentHeader from "components/dashboard/ContentHeader";
 
 class Education extends React.Component {
   render() {
-    return <Content />;
+    return (
+      <div className="content">
+        <ContentHeader
+          header="My Education"
+          btnadd="Add Education"
+          addpath="/add-education"
+        />
+      </div>
+    );
   }
 }
 

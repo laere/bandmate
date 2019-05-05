@@ -1,10 +1,6 @@
 import React from "react";
-import _ from "lodash";
+import empty from "utils/empty";
 import Spinner from "components/common/Spinner";
-
-const empty = val => {
-  return _.isEmpty(val) ? "" : val;
-};
 
 const MyInfoBody = ({ profile, isLoading }) => {
   if (isLoading) {
@@ -12,13 +8,18 @@ const MyInfoBody = ({ profile, isLoading }) => {
   }
 
   return (
-    <React.Fragment>
-      <div>Username: {empty(profile.username)}</div>
-      <div>Email: {empty(profile.email)}</div>
-      <div>Location: {empty(profile.location)}</div>
-      <div>Gender: {empty(profile.gender)}</div>
-      <div>Bio: {empty(profile.bio)}</div>
-    </React.Fragment>
+    <div className="myinfo-body">
+      <div>Username:</div>
+      <span>{empty(profile.username)}</span>
+      <div>Email: </div>
+      <span>{empty(profile.email)}</span>
+      <div>Location: </div>
+      <span>{empty(profile.location)}</span>
+      <div>Gender: </div>
+      <span>{empty(profile.gender)}</span>
+      <div>Bio: </div>
+      <span>{empty(profile.bio)}</span>
+    </div>
   );
 };
 

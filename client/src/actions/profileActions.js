@@ -1,5 +1,10 @@
 import axios from "axios";
-import { IS_LOADING, FETCH_PROFILE, SET_PROFILE } from "actions/types";
+import {
+  IS_LOADING,
+  FETCH_PROFILE,
+  SET_PROFILE,
+  CLEAR_CURRENT_PROFILE
+} from "actions/types";
 
 export const fetchProfile = () => async dispatch => {
   dispatch(isLoading());
@@ -22,5 +27,11 @@ export const createProfile = (userData, history) => async dispatch => {
 export const isLoading = () => {
   return {
     type: IS_LOADING
+  };
+};
+
+export const clearCurrentProfile = () => {
+  return {
+    type: CLEAR_CURRENT_PROFILE
   };
 };
