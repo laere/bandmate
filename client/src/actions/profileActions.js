@@ -6,3 +6,9 @@ export const fetchProfile = () => async dispatch => {
 
   dispatch({ type: FETCH_PROFILE, payload: res.data });
 };
+
+export const createProfile = (userData, history) => async dispatch => {
+  const res = await axios.post("/api/profiles", userData);
+
+  history.push("/dashboard");
+};

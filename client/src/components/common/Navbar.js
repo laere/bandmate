@@ -4,6 +4,16 @@ import { connect } from "react-redux";
 import { logoutUser } from "actions/authActions";
 
 class Navbar extends React.Component {
+  defaultLinks() {
+    return (
+      <React.Fragment>
+        <Link to="/search" className="navbar-item">
+          Search
+        </Link>
+      </React.Fragment>
+    );
+  }
+
   renderGuestLinks() {
     return (
       <React.Fragment>
@@ -44,6 +54,7 @@ class Navbar extends React.Component {
           <div className="navbar-item">Bandmate</div>
         </div>
         <div className="navbar-end">
+          {this.defaultLinks()}
           {isAuthenticated ? this.renderAuthLinks() : this.renderGuestLinks()}
         </div>
       </nav>

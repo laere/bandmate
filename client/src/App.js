@@ -5,20 +5,18 @@ import PrivateRoute from "components/common/PrivateRoute";
 
 import LandingPage from "components/common/LandingPage";
 import Navbar from "components/common/Navbar";
-import Dashboard from "components/common/Dashboard";
+import Dashboard from "components/dashboard/Dashboard";
 
 import Register from "components/auth/Register";
 import Login from "components/auth/Login";
 
 import Education from "components/education/Education";
+import MyInfo from "components/myinfo/MyInfo";
+import AddInfo from "components/myinfo/AddInfo";
 
 import "./App.css";
 
 class App extends React.Component {
-  componentDidUpdate() {
-    if (this.props.auth.isAuthenticated) {
-    }
-  }
   render() {
     return (
       <div className="App">
@@ -27,6 +25,8 @@ class App extends React.Component {
           <div className="dashboard">
             {this.props.auth.isAuthenticated ? <Dashboard /> : false}
             <PrivateRoute exact path="/education" component={Education} />
+            <PrivateRoute exact path="/myinfo" component={MyInfo} />
+            <PrivateRoute exact path="/add-info" component={AddInfo} />
           </div>
           <Route exact path="/" component={LandingPage} />
 

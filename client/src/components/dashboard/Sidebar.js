@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-class Dashboard extends React.Component {
+class Sidebar extends React.Component {
   sidebarLinks = [
     { name: "My Info", path: "myinfo" },
     { name: "Experience", path: "experience" },
@@ -26,4 +26,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+export default Sidebar;
