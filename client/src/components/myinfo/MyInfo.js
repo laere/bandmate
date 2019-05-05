@@ -2,17 +2,24 @@ import React from "react";
 import { connect } from "react-redux";
 
 import ContentHeader from "components/dashboard/ContentHeader";
-import ContentBody from "components/dashboard/ContentBody";
+import MyInfoBody from "components/myinfo/MyInfoBody";
 
 class MyInfo extends React.Component {
   render() {
     return (
       <div className="content">
         <ContentHeader header="My Info" button="Add Info" path="/add-info" />
-        <ContentBody />
+        <MyInfoBody
+          profile={this.props.profile}
+          isLoading={this.props.isLoading}
+        />
       </div>
     );
   }
 }
 
-export default MyInfo;
+const mapStateToProps = ({ profiles: { isLoading, profile } }) => {
+  return { isLoading, profile };
+};
+
+export default connect(mapStateToProps)(MyInfo);

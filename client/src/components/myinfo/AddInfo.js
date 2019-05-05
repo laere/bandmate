@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { createProfile } from "actions/profileActions";
+import { Link, withRouter } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 class AddInfo extends React.Component {
@@ -11,8 +12,9 @@ class AddInfo extends React.Component {
         <div>** is required</div>
         <Formik
           initialValues={{ username: username }}
-          onSubmit={({ setSubmitting }) => {
+          onSubmit={(values, { setSubmitting }) => {
             setSubmitting(false);
+            this.props.createProfile(values, this.props.history);
           }}
         >
           {({ isSubmitting }) => (
@@ -71,6 +73,7 @@ class AddInfo extends React.Component {
                 className="button is-primary is-large button-auth"
                 style={{ marginTop: "20px" }}
                 disabled={isSubmitting}
+                onSubmit={this.onSubmit}
               >
                 Submit
               </button>
@@ -86,4 +89,7 @@ const mapStateToProps = ({ auth }) => {
   return { auth };
 };
 
-export default connect(mapStateToProps)(AddInfo);
+export default connect(
+  mapStateToProps,
+  { createProfile }
+)(withRouter(AddInfo));

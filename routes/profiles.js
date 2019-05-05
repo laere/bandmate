@@ -34,6 +34,7 @@ router.get(
 router.post(
   "/",
   myAsync(async (req, res, next) => {
+    console.log(req.body);
     const { error } = validateProfile(req.body);
     if (error) return res.status(400).send(error.details[0].message);
     // See if this profile already exists for the user
