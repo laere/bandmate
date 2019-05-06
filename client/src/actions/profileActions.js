@@ -24,6 +24,14 @@ export const createProfile = (userData, history) => async dispatch => {
   dispatch({ type: FETCH_PROFILE, payload: res.data });
 };
 
+export const editProfile = (userData, history) => async dispatch => {
+  const res = await axios.put("/api/profiles", userData);
+
+  history.push("/myinfo");
+
+  dispatch({ type: FETCH_PROFILE, payload: res.data });
+};
+
 export const isLoading = () => {
   return {
     type: IS_LOADING

@@ -4,24 +4,32 @@ import { createProfile } from "actions/profileActions";
 import { Link, withRouter } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-class AddInfo extends React.Component {
+class AddInfoForm extends React.Component {
   render() {
     const { username } = this.props.auth.user;
     return (
       <div className="form">
         <h1 className="">Your information:</h1>
-        <div>** is required field</div>
+        <div>* is required field</div>
         <Formik
-          initialValues={{ username: username }}
+          initialValues={{
+            username: username
+          }}
           onSubmit={(values, { setSubmitting }) => {
+            console.log(values);
             setSubmitting(false);
             this.props.createProfile(values, this.props.history);
           }}
         >
-          {({ isSubmitting }) => (
+          {({ isSubmitting, handleChange, values }) => (
             <Form>
-              <label className="label">**Username:</label>
-              <Field type="text" name="username" className="input" />
+              <label className="label">*Username:</label>
+              <Field
+                type="text"
+                name="username"
+                className="input"
+                value={values.username}
+              />
               <ErrorMessage
                 className="help is-danger"
                 name="username"
@@ -29,7 +37,12 @@ class AddInfo extends React.Component {
                 style={{ fontSize: "24px" }}
               />
               <label className="label">Email:</label>
-              <Field type="text" name="email" className="input" />
+              <Field
+                type="text"
+                name="email"
+                className="input"
+                value={values.email}
+              />
               <ErrorMessage
                 className="help is-danger"
                 name="email"
@@ -37,7 +50,12 @@ class AddInfo extends React.Component {
                 style={{ fontSize: "24px" }}
               />
               <label className="label">Location:</label>
-              <Field type="text" name="location" className="input" />
+              <Field
+                type="text"
+                name="location"
+                className="input"
+                value={values.location}
+              />
               <ErrorMessage
                 className="help is-danger"
                 name="location"
@@ -45,9 +63,17 @@ class AddInfo extends React.Component {
                 style={{ fontSize: "24px" }}
               />
               <label className="label">Gender:</label>
-              <Field component="select" name="gender" className="input">
-                <option value="male">male</option>
-                <option value="female">female</option>
+              <Field
+                component="select"
+                name="gender"
+                className="input"
+                onChange={handleChange}
+                value={values.gender}
+                placeholder="s"
+              >
+                <option value="" label="Select a gender" />
+                <option value="male">Male</option>
+                <option value="female">Female</option>
               </Field>
               <ErrorMessage
                 className="help is-danger"
@@ -61,6 +87,7 @@ class AddInfo extends React.Component {
                 name="bio"
                 className="input"
                 style={{ height: "200px" }}
+                value={values.bio}
               />
               <ErrorMessage
                 className="help is-danger"
@@ -92,4 +119,4 @@ const mapStateToProps = ({ auth }) => {
 export default connect(
   mapStateToProps,
   { createProfile }
-)(withRouter(AddInfo));
+)(withRouter(AddInfoForm));

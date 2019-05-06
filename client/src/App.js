@@ -12,7 +12,9 @@ import Login from "components/auth/Login";
 
 import Education from "components/education/Education";
 import MyInfo from "components/myinfo/MyInfo";
-import AddInfo from "components/myinfo/AddInfo";
+
+import AddInfoForm from "components/myinfo/AddInfoForm";
+import EditInfo from "components/myinfo/EditInfo";
 
 import "./App.css";
 
@@ -26,7 +28,8 @@ class App extends React.Component {
             {this.props.auth.isAuthenticated ? <Dashboard /> : false}
             <PrivateRoute exact path="/education" component={Education} />
             <PrivateRoute exact path="/myinfo" component={MyInfo} />
-            <PrivateRoute exact path="/add-info" component={AddInfo} />
+            <PrivateRoute exact path="/add-info" component={AddInfoForm} />
+            <PrivateRoute exact path="/edit-info" component={EditInfo} />
           </div>
           <Route exact path="/" component={LandingPage} />
 
