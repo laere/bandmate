@@ -53,7 +53,7 @@ router.post(
     // save and send
     await profile.save();
 
-    res.json(profile);
+    res.send(profile);
   })
 );
 

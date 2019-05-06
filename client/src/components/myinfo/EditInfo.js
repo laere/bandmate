@@ -78,8 +78,9 @@ class EditInfo extends React.Component {
                 placeholder="Gender"
                 value={values.gender}
               >
-                <option value="male">male</option>
-                <option value="female">female</option>
+                <option value="" label="Select a gender" />
+                <option value="male">Male</option>
+                <option value="female">Female</option>
               </Field>
               <ErrorMessage
                 className="help is-danger"
