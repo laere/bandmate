@@ -9,6 +9,7 @@ router.post(
   "/",
   myAsync(async (req, res, next) => {
     const { error } = validateExperience(req.body);
+    console.log(error);
     if (error) {
       res.status(400).send(error.details[0].message);
       next();
@@ -26,6 +27,8 @@ router.post(
     profile.experience.push(experienceProps);
 
     await profile.save();
+
+    console.log(profile);
 
     res.send(profile);
   })

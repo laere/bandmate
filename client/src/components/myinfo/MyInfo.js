@@ -3,29 +3,24 @@ import { connect } from "react-redux";
 import _ from "lodash";
 
 import Spinner from "components/common/Spinner";
-import MyInfoHeader from "components/myinfo/MyInfoHeader";
+import ContentHeader from "components/dashboard/ContentHeader";
 import MyInfoBody from "components/myinfo/MyInfoBody";
 import AddInfoBanner from "components/myinfo/AddInfoBanner";
 
 class MyInfo extends React.Component {
   render() {
-    if (this.props.isLoading && _.isEmpty(this.props.profile)) {
+    const { profile, isLoading } = this.props;
+
+    if (isLoading) {
       return <Spinner />;
-    } else if (_.isEmpty(this.props.profile)) {
+    } else if (_.isEmpty(profile)) {
       return <AddInfoBanner />;
     }
 
     return (
       <div className="content">
-        <MyInfoHeader
-          header="My Info"
-          btnedit="Edit Info"
-          editpath="/edit-info"
-        />
-        <MyInfoBody
-          profile={this.props.profile}
-          isLoading={this.props.isLoading}
-        />
+        <ContentHeader header="My Info" btn="Edit Info" path="/edit-info" />
+        <MyInfoBody profile={profile} isLoading={isLoading} />
       </div>
     );
   }

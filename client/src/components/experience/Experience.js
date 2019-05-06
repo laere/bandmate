@@ -1,18 +1,18 @@
 import React from "react";
 import ContentHeader from "components/dashboard/ContentHeader";
 
-class Education extends React.Component {
+class Experience extends React.Component {
   render() {
     return (
       <div className="content">
         <ContentHeader
-          header="My Education"
-          btn="Add Education"
-          path="/add-education"
+          header="My Experience"
+          btn="Add Experience"
+          path="/add-experience"
         />
       </div>
     );
   }
 }
 
-export default Education;
+export default Experience;

@@ -69,7 +69,6 @@ class AddInfoForm extends React.Component {
                 className="input"
                 onChange={handleChange}
                 value={values.gender}
-                placeholder="s"
               >
                 <option value="" label="Select a gender" />
                 <option value="male">Male</option>

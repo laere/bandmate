@@ -3,18 +3,18 @@ const Joi = require("joi");
 function validateExperience(experience) {
   const schema = Joi.object()
     .keys({
-      bandName: Joi.string()
+      bandname: Joi.string()
         .min(2)
         .max(50)
         .required(),
-      bandWebsite: Joi.string()
+      bandwebsite: Joi.string()
         .min(2)
         .max(50),
-      timePlayedWith: Joi.string()
+      timeplayedwith: Joi.string()
         .min(2)
         .max(50)
         .required(),
-      instrumentsPlayed: Joi.string()
+      instrumentsplayed: Joi.string()
         .min(2)
         .max(50)
         .required(),

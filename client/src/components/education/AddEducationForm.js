@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createProfile } from "actions/profileActions";
+import { createEducation } from "actions/profileActions";
 import { Link, withRouter } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-class AddEducation extends React.Component {
+class AddEducationForm extends React.Component {
   render() {
     const { username } = this.props.auth.user;
     return (
@@ -15,7 +15,7 @@ class AddEducation extends React.Component {
           initialValues={{ username: username }}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(false);
-            this.props.createProfile(values, this.props.history);
+            this.props.createEducation(values, this.props.history);
           }}
         >
           {({ isSubmitting }) => (
@@ -91,5 +91,5 @@ const mapStateToProps = ({ auth }) => {
 
 export default connect(
   mapStateToProps,
-  { createProfile }
-)(withRouter(AddEducation));
+  { createEducation }
+)(withRouter(AddEducationForm));

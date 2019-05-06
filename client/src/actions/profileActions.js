@@ -32,6 +32,22 @@ export const editProfile = (userData, history) => async dispatch => {
   dispatch({ type: FETCH_PROFILE, payload: res.data });
 };
 
+export const createEducation = (userData, history) => async dispatch => {
+  const res = await axios.post("/api/profiles/education", userData);
+
+  history.push("/education");
+
+  dispatch({ type: FETCH_PROFILE, payload: res.data });
+};
+
+export const createExperience = (userData, history) => async dispatch => {
+  const res = await axios.post("/api/profiles/experience", userData);
+
+  history.push("/experience");
+
+  dispatch({ type: FETCH_PROFILE, payload: res.data });
+};
+
 export const isLoading = () => {
   return {
     type: IS_LOADING

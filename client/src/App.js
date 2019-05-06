@@ -10,11 +10,15 @@ import Dashboard from "components/dashboard/Dashboard";
 import Register from "components/auth/Register";
 import Login from "components/auth/Login";
 
-import Education from "components/education/Education";
 import MyInfo from "components/myinfo/MyInfo";
-
 import AddInfoForm from "components/myinfo/AddInfoForm";
 import EditInfo from "components/myinfo/EditInfo";
+
+import Education from "components/education/Education";
+import AddEducationForm from "components/education/AddEducationForm";
+
+import Experience from "components/experience/Experience";
+import AddExperienceForm from "components/experience/AddExperienceForm";
 
 import "./App.css";
 
@@ -26,10 +30,23 @@ class App extends React.Component {
           <Navbar />
           <div className="dashboard">
             {this.props.auth.isAuthenticated ? <Dashboard /> : false}
-            <PrivateRoute exact path="/education" component={Education} />
             <PrivateRoute exact path="/myinfo" component={MyInfo} />
             <PrivateRoute exact path="/add-info" component={AddInfoForm} />
             <PrivateRoute exact path="/edit-info" component={EditInfo} />
+
+            <PrivateRoute exact path="/education" component={Education} />
+            <PrivateRoute
+              exact
+              path="/add-education"
+              component={AddEducationForm}
+            />
+
+            <PrivateRoute exact path="/experience" component={Experience} />
+            <PrivateRoute
+              exact
+              path="/add-experience"
+              component={AddExperienceForm}
+            />
           </div>
           <Route exact path="/" component={LandingPage} />
 
