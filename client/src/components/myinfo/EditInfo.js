@@ -6,9 +6,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 class EditInfo extends React.Component {
   render() {
-    const { username } = this.props.auth.user;
+    // const { username } = this.props.auth.user;
     const { profile } = this.props;
-    console.log(profile);
     return (
       <div className="form">
         <h1 className="">Your information:</h1>

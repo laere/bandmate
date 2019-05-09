@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import ContentHeader from "components/dashboard/ContentHeader";
+import EducationBody from "components/education/EducationBody";
 
 class Education extends React.Component {
   render() {
@@ -10,9 +12,22 @@ class Education extends React.Component {
           btn="Add Education"
           path="/add-education"
         />
+        <EducationBody
+          isLoading={this.props.isLoading}
+          education={this.props.education}
+        />
       </div>
     );
   }
 }
 
-export default Education;
+const mapStateToProps = ({
+  profiles: {
+    isLoading,
+    profile: { education }
+  }
+}) => {
+  return { isLoading, education };
+};
+
+export default connect(mapStateToProps)(Education);

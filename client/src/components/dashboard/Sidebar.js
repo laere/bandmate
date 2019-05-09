@@ -6,9 +6,9 @@ class Sidebar extends React.Component {
     { name: "My Info", path: "myinfo" },
     { name: "Experience", path: "experience" },
     { name: "Education", path: "education" },
+    { name: "Instruments", path: "instruments" },
     { name: "Favorites", path: "favorites" },
-    { name: "My Bands", path: "mybands" },
-    { name: "Instruments", path: "instruments" }
+    { name: "My Bands", path: "mybands" }
   ];
 
   renderSidebar() {

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchProfile, createProfile } from "actions/profileActions";
 import Sidebar from "components/dashboard/Sidebar";
