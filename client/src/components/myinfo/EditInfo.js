@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { editProfile } from "actions/profileActions";
 import { Link, withRouter } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import myinfoValidation from "frontValidation/myinfoValidation";
 
 class EditInfo extends React.Component {
   render() {
@@ -21,6 +22,7 @@ class EditInfo extends React.Component {
             gender: profile.gender
           }}
           enableReintialize={true}
+          validate={values => myinfoValidation(values)}
           onSubmit={(values, { setSubmitting }) => {
             console.log(values);
             setSubmitting(false);

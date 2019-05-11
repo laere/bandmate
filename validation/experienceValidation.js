@@ -21,7 +21,7 @@ function validateExperience(experience) {
       description: Joi.string()
         .min(2)
         .max(255),
-      current: Joi.boolean().required()
+      current: Joi.boolean()
     })
     .unknown();
 

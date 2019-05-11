@@ -10,6 +10,7 @@ function validateProfile(profile) {
       email: Joi.string()
         .min(2)
         .max(50)
+        .required()
         .email(),
       gender: Joi.string(),
       location: Joi.string(),

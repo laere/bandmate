@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { createProfile } from "actions/profileActions";
 import { Link, withRouter } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import myinfoValidation from "frontValidation/myinfoValidation";
 
 class AddInfoForm extends React.Component {
   render() {
@@ -13,8 +14,13 @@ class AddInfoForm extends React.Component {
         <div>* is required field</div>
         <Formik
           initialValues={{
-            username: username
+            username: username,
+            email: "",
+            location: "",
+            gender: "",
+            bio: ""
           }}
+          validate={values => myinfoValidation(values)}
           onSubmit={(values, { setSubmitting }) => {
             console.log(values);
             setSubmitting(false);

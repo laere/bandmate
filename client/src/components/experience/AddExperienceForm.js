@@ -3,12 +3,22 @@ import { connect } from "react-redux";
 import { createExperience } from "actions/profileActions";
 import { withRouter } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import experienceValidation from "frontValidation/experienceValidation";
 
 class AddExperienceForm extends React.Component {
   render() {
     return (
       <div className="form">
         <Formik
+          initialValues={{
+            bandname: "",
+            bandwebsite: "",
+            timeplayedwith: "",
+            instrumentsplayed: "",
+            description: "",
+            current: ""
+          }}
+          validate={values => experienceValidation(values)}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(false);
             this.props.createExperience(values, this.props.history);
@@ -50,6 +60,24 @@ class AddExperienceForm extends React.Component {
                 component="div"
                 style={{ fontSize: "24px" }}
               />
+              <label className="label">Current:</label>
+              <Field
+                component="select"
+                name="current"
+                className="input"
+                onChange={handleChange}
+                value={values.current}
+              >
+                <option value="false">false</option>
+                <option value="true">true</option>
+              </Field>
+              <ErrorMessage
+                className="help is-danger"
+                name="current"
+                component="div"
+                style={{ fontSize: "24px" }}
+              />
+
               <label className="label">Description:</label>
               <Field
                 component="textarea"
@@ -60,24 +88,6 @@ class AddExperienceForm extends React.Component {
               <ErrorMessage
                 className="help is-danger"
                 name="description"
-                component="div"
-                style={{ fontSize: "24px" }}
-              />
-              <label className="label">Current:</label>
-              <Field
-                component="select"
-                name="current"
-                className="input"
-                onChange={handleChange}
-                value={values.current}
-              >
-                <option value="" label="Currently with this band?" />
-                <option value="true">true</option>
-                <option value="false">false</option>
-              </Field>
-              <ErrorMessage
-                className="help is-danger"
-                name="current"
                 component="div"
                 style={{ fontSize: "24px" }}
               />

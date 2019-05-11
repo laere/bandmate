@@ -20,6 +20,12 @@ import AddEducationForm from "components/education/AddEducationForm";
 import Experience from "components/experience/Experience";
 import AddExperienceForm from "components/experience/AddExperienceForm";
 
+import Instruments from "components/instruments/Instruments";
+import AddInstrumentsForm from "components/instruments/AddInstrumentsForm";
+import InstrumentsDelete from "components/instruments/InstrumentsDelete";
+
+import Search from "components/search/Search";
+
 import "./App.css";
 
 class App extends React.Component {
@@ -47,9 +53,21 @@ class App extends React.Component {
               path="/add-experience"
               component={AddExperienceForm}
             />
+
+            <PrivateRoute exact path="/instruments" component={Instruments} />
+            <PrivateRoute
+              exact
+              path="/add-instruments"
+              component={AddInstrumentsForm}
+            />
+            <PrivateRoute
+              exact
+              path="/instruments/:id"
+              component={InstrumentsDelete}
+            />
           </div>
           <Route exact path="/" component={LandingPage} />
-
+          <Route exact path="/search" component={Search} />
           <div>
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />

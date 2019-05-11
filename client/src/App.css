@@ -1,46 +1,8 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 .landing-page {
   background-image: url("https://freedesignfile.com/upload/2016/11/The-blue-light-shines-on-the-cheering-crowd-rock-concert-01.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-.title,
-.subtitle {
-  color: white;
-}
-
-.title {
-  font-size: 60px;
-}
-
-.subtitle {
-  font-size: 28px;
 }
 
 .button {
@@ -67,19 +29,34 @@
 }
 
 /**************************************/
+/*********SEARCH FORM
+/**************************************/
+
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form button {
+  margin-left: 20px;
+}
+
+.search-title {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/**************************************/
 /*********DASHBOARD
 /**************************************/
 .dashboard {
-  display: flex;
 }
 
 .sidebar {
-  background-color: lime;
-  height: 95vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex-basis: 10%;
 }
 
 .dashboard-links {
@@ -102,8 +79,17 @@
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  flex: 2;
   margin-top: 50px;
+}
+
+.dashboard-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-content span {
+  margin-left: 20px;
 }
 
 .myinfo-body,
@@ -115,9 +101,29 @@
   align-items: flex-start;
 }
 
+.instruments-body {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column wrap;
+  justify-content: space-between;
+
+  width: 80%;
+}
+
 .myinfo-body div,
 .experience-body div,
 .education-body div {
   margin: 20px 0;
   font-size: 20px;
+}
+
+.instruments-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.instruments-info span {
+  margin-left: 20px;
 }

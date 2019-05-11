@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-class Sidebar extends React.Component {
+class DashboardNav extends React.Component {
   sidebarLinks = [
     { name: "My Info", path: "myinfo" },
     { name: "Experience", path: "experience" },
@@ -11,7 +11,7 @@ class Sidebar extends React.Component {
     { name: "My Bands", path: "mybands" }
   ];
 
-  renderSidebar() {
+  renderDashboardNav() {
     return this.sidebarLinks.map(({ name, path }) => {
       return (
         <Link key={name} to={`/${path}`} className="dashboard-links">
@@ -22,8 +22,8 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    return <div className="sidebar">{this.renderSidebar()}</div>;
+    return <div className="navbar">{this.renderDashboardNav()}</div>;
   }
 }
 
-export default Sidebar;
+export default DashboardNav;

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchProfile, createProfile } from "actions/profileActions";
-import Sidebar from "components/dashboard/Sidebar";
+import { fetchProfile } from "actions/profileActions";
+import DashboardNav from "components/dashboard/DashboardNav";
 
 class Dashboard extends React.Component {
   componentDidMount() {
@@ -11,7 +11,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Sidebar />
+        <DashboardNav />
       </React.Fragment>
     );
   }
@@ -19,5 +19,5 @@ class Dashboard extends React.Component {
 
 export default connect(
   null,
-  { fetchProfile, createProfile }
+  { fetchProfile }
 )(Dashboard);

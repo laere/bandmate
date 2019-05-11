@@ -48,6 +48,26 @@ export const createExperience = (userData, history) => async dispatch => {
   dispatch({ type: FETCH_PROFILE, payload: res.data });
 };
 
+export const createInstrument = (userData, history) => async dispatch => {
+  dispatch(isLoading());
+
+  const res = await axios.post("/api/profiles/instruments", userData);
+
+  history.push("/instruments");
+
+  dispatch({ type: FETCH_PROFILE, payload: res.data });
+};
+
+export const deleteInstrument = (id, history) => async dispatch => {
+  dispatch(isLoading());
+
+  const res = await axios.delete(`/api/profiles/instruments/${id}`);
+
+  history.push("/instruments");
+
+  dispatch({ type: FETCH_PROFILE, payload: res.data });
+};
+
 export const isLoading = () => {
   return {
     type: IS_LOADING

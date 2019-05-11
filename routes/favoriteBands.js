@@ -15,8 +15,6 @@ router.post(
     const { error } = validateName(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    console.log(req.body);
-
     let profile = await Profile.findOne({ user: req.user.id });
 
     profile.favoriteBands.push(req.body);

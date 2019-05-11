@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { createEducation } from "actions/profileActions";
 import { withRouter } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import educationValidation from "frontValidation/educationValidation";
 
 class AddEducationForm extends React.Component {
   render() {
@@ -12,15 +13,30 @@ class AddEducationForm extends React.Component {
         <h1 className="">Your education:</h1>
         <div>* is required field</div>
         <Formik
+          initialValues={{
+            school: "",
+            degree: "",
+            fieldofstudy: "",
+            from: "",
+            to: "",
+            current: "",
+            description: ""
+          }}
+          validate={values => educationValidation(values)}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(false);
             this.props.createEducation(values, this.props.history);
           }}
         >
-          {({ isSubmitting }) => (
+          {({ isSubmitting, handleChange, values }) => (
             <Form>
               <label className="label">*School:</label>
-              <Field type="text" name="school" className="input" />
+              <Field
+                type="text"
+                name="school"
+                className="input"
+                value={values.school}
+              />
               <ErrorMessage
                 className="help is-danger"
                 name="school"
@@ -28,7 +44,12 @@ class AddEducationForm extends React.Component {
                 style={{ fontSize: "24px" }}
               />
               <label className="label">*Degree:</label>
-              <Field type="text" name="degree" className="input" />
+              <Field
+                type="text"
+                name="degree"
+                className="input"
+                value={values.degree}
+              />
               <ErrorMessage
                 className="help is-danger"
                 name="degree"
@@ -36,7 +57,12 @@ class AddEducationForm extends React.Component {
                 style={{ fontSize: "24px" }}
               />
               <label className="label">*Field of Study:</label>
-              <Field type="text" name="fieldofstudy" className="input" />
+              <Field
+                type="text"
+                name="fieldofstudy"
+                className="input"
+                value={values.fieldofstudy}
+              />
               <ErrorMessage
                 className="help is-danger"
                 name="fieldofstudy"
@@ -49,6 +75,7 @@ class AddEducationForm extends React.Component {
                 render={({ field }) => (
                   <input {...field} type="datetime-local" className="input" />
                 )}
+                value={values.from}
               />
               <ErrorMessage
                 className="help is-danger"
@@ -62,6 +89,7 @@ class AddEducationForm extends React.Component {
                 render={({ field }) => (
                   <input {...field} type="datetime-local" className="input" />
                 )}
+                value={values.to}
               />
               <ErrorMessage
                 className="help is-danger"
@@ -70,10 +98,15 @@ class AddEducationForm extends React.Component {
                 style={{ fontSize: "24px" }}
               />
               <label className="label">Current:</label>
-              <Field component="select" name="current" className="input">
-                <option value="">Select an option</option>
-                <option value="true">true</option>
+              <Field
+                component="select"
+                name="current"
+                className="input"
+                onChange={handleChange}
+                value={values.current}
+              >
                 <option value="false">false</option>
+                <option value="true">true</option>
               </Field>
               <ErrorMessage
                 className="help is-danger"
@@ -86,6 +119,7 @@ class AddEducationForm extends React.Component {
                 component="textarea"
                 name="description"
                 className="input"
+                value={values.description}
                 style={{ height: "200px" }}
               />
               <ErrorMessage

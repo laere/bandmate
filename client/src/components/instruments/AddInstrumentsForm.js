@@ -1,96 +1,59 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createEducation } from "actions/profileActions";
+import { createInstrument } from "actions/profileActions";
 import { withRouter } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import instrumentsValidation from "frontValidation/instrumentsValidation";
 
-class AddEducationForm extends React.Component {
+class AddInstrumentsForm extends React.Component {
   render() {
-    const { username } = this.props.auth.user;
     return (
       <div className="form">
-        <h1 className="">Your education:</h1>
-        <div>* is required field</div>
+        <h1 className="">Your instruments:</h1>
         <Formik
+          initialValues={{
+            instrument: "",
+            instrumenttype: "",
+            playingstyle: "",
+            timeplayed: ""
+          }}
+          validate={values => instrumentsValidation(values)}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(false);
-            this.props.createEducation(values, this.props.history);
+            this.props.createInstrument(values, this.props.history);
           }}
         >
           {({ isSubmitting }) => (
             <Form>
-              <label className="label">*School:</label>
-              <Field type="text" name="school" className="input" />
+              <label className="label">Instrument:</label>
+              <Field type="text" name="instrument" className="input" />
               <ErrorMessage
                 className="help is-danger"
-                name="school"
+                name="instrument"
                 component="div"
                 style={{ fontSize: "24px" }}
               />
-              <label className="label">*Degree:</label>
-              <Field type="text" name="degree" className="input" />
+              <label className="label">Instrument Type:</label>
+              <Field type="text" name="instrumenttype" className="input" />
               <ErrorMessage
                 className="help is-danger"
-                name="degree"
+                name="instrumenttype"
                 component="div"
                 style={{ fontSize: "24px" }}
               />
-              <label className="label">*Field of Study:</label>
-              <Field type="text" name="fieldofstudy" className="input" />
+              <label className="label">Playing Style:</label>
+              <Field type="text" name="playingstyle" className="input" />
               <ErrorMessage
                 className="help is-danger"
-                name="fieldofstudy"
+                name="playingstyle"
                 component="div"
                 style={{ fontSize: "24px" }}
               />
-              <label className="label">*From:</label>
-              <Field
-                name="from"
-                render={({ field }) => (
-                  <input {...field} type="datetime-local" className="input" />
-                )}
-              />
+              <label className="label">Time Played:</label>
+              <Field type="text" name="timeplayed" className="input" />
               <ErrorMessage
                 className="help is-danger"
-                name="from"
-                component="div"
-                style={{ fontSize: "24px" }}
-              />
-              <label className="label">To:</label>
-              <Field
-                name="to"
-                render={({ field }) => (
-                  <input {...field} type="datetime-local" className="input" />
-                )}
-              />
-              <ErrorMessage
-                className="help is-danger"
-                name="to"
-                component="div"
-                style={{ fontSize: "24px" }}
-              />
-              <label className="label">Current:</label>
-              <Field component="select" name="current" className="input">
-                <option value="">Select an option</option>
-                <option value="true">true</option>
-                <option value="false">false</option>
-              </Field>
-              <ErrorMessage
-                className="help is-danger"
-                name="current"
-                component="div"
-                style={{ fontSize: "24px" }}
-              />
-              <label className="label">Description:</label>
-              <Field
-                component="textarea"
-                name="description"
-                className="input"
-                style={{ height: "200px" }}
-              />
-              <ErrorMessage
-                className="help is-danger"
-                name="description"
+                name="timeplayed"
                 component="div"
                 style={{ fontSize: "24px" }}
               />
@@ -111,11 +74,7 @@ class AddEducationForm extends React.Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => {
-  return { auth };
-};
-
 export default connect(
-  mapStateToProps,
-  { createEducation }
-)(withRouter(AddEducationForm));
+  null,
+  { createInstrument }
+)(withRouter(AddInstrumentsForm));
