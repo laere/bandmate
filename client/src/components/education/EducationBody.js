@@ -1,10 +1,10 @@
 import React from "react";
 import empty from "utils/empty";
+import { Link } from "react-router-dom";
 import Spinner from "components/common/Spinner";
+import Moment from "react-moment";
 
 const EducationBody = ({ isLoading, education }) => {
-  console.log("education", education);
-
   if (isLoading) {
     return <Spinner />;
   }
@@ -15,22 +15,56 @@ const EducationBody = ({ isLoading, education }) => {
 
   const content = education.map(edu => {
     return (
-      <React.Fragment key={edu._id}>
-        <div>School:</div>
-        <span>{empty(edu.school)}</span>
-        <div>Degree:</div>
-        <span>{empty(edu.degree)}</span>
-        <div>Field of Study:</div>
-        <span>{empty(edu.fieldofstudy)}</span>
-        <div>From:</div>
-        <span>{empty(edu.from)}</span>
-        <div>To:</div>
-        <span>{empty(edu.to)}</span>
-        <div>Current:</div>
-        <span>{empty(edu.current)}</span>
-        <div>Description:</div>
-        <span>{empty(edu.description)}</span>
-      </React.Fragment>
+      <section className="section" key={edu._key}>
+        <div>
+          <div className="content-info">
+            <div>School:</div>
+            <span>{empty(edu.school)}</span>
+          </div>
+          <div className="content-info">
+            <div>Degree:</div>
+            <span>{empty(edu.degree)}</span>
+          </div>
+          <div className="content-info">
+            <div>Field of Study:</div>
+            <span>{empty(edu.fieldofstudy)}</span>
+          </div>
+          <div className="content-info">
+            <div>From:</div>
+            <span>
+              <Moment format="MM/DD/YYYY">{empty(edu.from)}</Moment>
+            </span>
+          </div>
+          <div className="content-info">
+            <div>To:</div>
+            <span>
+              <Moment format="MM/DD/YYYY">{empty(edu.to)}</Moment>
+            </span>
+          </div>
+          <div className="content-info">
+            <div>Current:</div>
+            <span>{empty(edu.current)}</span>
+          </div>
+          <div className="content-info">
+            <div>Description:</div>
+            <span>{empty(edu.description)}</span>
+          </div>
+        </div>
+        <Link
+          to={`/education/${edu._id}`}
+          className="button is-danger is-small"
+          style={{ margin: 0 }}
+        >
+          Delete
+        </Link>
+        <Link
+          to={`/education/${edu._id}`}
+          className="button is-info is-small"
+          style={{ margin: 0 }}
+        >
+          Edit
+        </Link>
+      </section>
     );
   });
 

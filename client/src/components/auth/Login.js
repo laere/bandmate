@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { connect } from "react-redux";
 import { loginUser } from "actions/authActions";
 import { withRouter } from "react-router-dom";
-import loginValidation from "validation/loginValidation";
+import loginValidation from "frontValidation/loginValidation";
 
 class Login extends React.Component {
   componentDidUpdate() {

@@ -1,10 +1,3 @@
-.landing-page {
-  background-image: url("https://freedesignfile.com/upload/2016/11/The-blue-light-shines-on-the-cheering-crowd-rock-concert-01.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
 .button {
   margin: 0 10px;
 }
@@ -26,6 +19,24 @@
   display: flex;
   align-items: center;
   flex: 2;
+}
+
+.section {
+  margin-right: 30px;
+}
+
+/**************************************/
+/*********LANDING PAGE
+/**************************************/
+.landing-page {
+  background-image: url("https://freedesignfile.com/upload/2016/11/The-blue-light-shines-on-the-cheering-crowd-rock-concert-01.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hero-body {
+  text-align: center;
 }
 
 /**************************************/
@@ -92,38 +103,31 @@
   margin-left: 20px;
 }
 
+.instruments-body,
 .myinfo-body,
 .experience-body,
 .education-body {
   margin-top: 50px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.instruments-body {
-  margin-top: 50px;
-  display: flex;
   flex-direction: column wrap;
-  justify-content: space-between;
-
-  width: 80%;
+  align-items: center;
+  width: 90%;
+  background-color: lightgreen;
 }
 
-.myinfo-body div,
-.experience-body div,
-.education-body div {
+/* .myinfo-body div,
+.experience-body div {
   margin: 20px 0;
   font-size: 20px;
-}
+} */
 
-.instruments-info {
+.content-info {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 20px;
 }
 
-.instruments-info span {
-  margin-left: 20px;
+.content-info span {
+  margin-left: 15px;
 }

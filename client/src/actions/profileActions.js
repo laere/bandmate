@@ -68,6 +68,26 @@ export const deleteInstrument = (id, history) => async dispatch => {
   dispatch({ type: FETCH_PROFILE, payload: res.data });
 };
 
+export const deleteExperience = (id, history) => async dispatch => {
+  dispatch(isLoading());
+
+  const res = await axios.delete(`/api/profiles/experience/${id}`);
+
+  history.push("/experience");
+
+  dispatch({ type: FETCH_PROFILE, payload: res.data });
+};
+
+export const deleteEducation = (id, history) => async dispatch => {
+  dispatch(isLoading());
+
+  const res = await axios.delete(`/api/profiles/education/${id}`);
+
+  history.push("/education");
+
+  dispatch({ type: FETCH_PROFILE, payload: res.data });
+};
+
 export const isLoading = () => {
   return {
     type: IS_LOADING

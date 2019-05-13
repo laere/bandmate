@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { connect } from "react-redux";
 import { registerUser } from "actions/authActions";
 import { withRouter } from "react-router-dom";
-import registerValidation from "validation/registerValidation";
+import registerValidation from "frontValidation/registerValidation";
 
 class Register extends React.Component {
   render() {

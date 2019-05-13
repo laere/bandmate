@@ -16,13 +16,15 @@ import EditInfo from "components/myinfo/EditInfo";
 
 import Education from "components/education/Education";
 import AddEducationForm from "components/education/AddEducationForm";
+import DeleteEducation from "components/education/DeleteEducation";
 
 import Experience from "components/experience/Experience";
 import AddExperienceForm from "components/experience/AddExperienceForm";
+import DeleteExperience from "components/experience/DeleteExperience";
 
 import Instruments from "components/instruments/Instruments";
 import AddInstrumentsForm from "components/instruments/AddInstrumentsForm";
-import InstrumentsDelete from "components/instruments/InstrumentsDelete";
+import DeleteInstrument from "components/instruments/DeleteInstrument";
 
 import Search from "components/search/Search";
 
@@ -46,12 +48,22 @@ class App extends React.Component {
               path="/add-education"
               component={AddEducationForm}
             />
+            <PrivateRoute
+              exact
+              path="/education/:id"
+              component={DeleteEducation}
+            />
 
             <PrivateRoute exact path="/experience" component={Experience} />
             <PrivateRoute
               exact
               path="/add-experience"
               component={AddExperienceForm}
+            />
+            <PrivateRoute
+              exact
+              path="/experience/:id"
+              component={DeleteExperience}
             />
 
             <PrivateRoute exact path="/instruments" component={Instruments} />
@@ -63,7 +75,7 @@ class App extends React.Component {
             <PrivateRoute
               exact
               path="/instruments/:id"
-              component={InstrumentsDelete}
+              component={DeleteInstrument}
             />
           </div>
           <Route exact path="/" component={LandingPage} />

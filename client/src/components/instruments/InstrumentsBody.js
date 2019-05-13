@@ -14,32 +14,30 @@ const InstrumentsBody = ({ isLoading, instruments }) => {
 
   const content = instruments.map(instrument => {
     return (
-      <React.Fragment key={instrument._id}>
-        <section className="section">
-          <div>
-            <h1 className="title">{empty(instrument.instrument)}</h1>
-            <div className="instruments-info">
-              <div>Instrument Type: </div>
-              <span>{empty(instrument.instrumenttype)}</span>
-            </div>
-            <div className="instruments-info">
-              <div>Playing Style: </div>
-              <span>{empty(instrument.playingstyle)}</span>
-            </div>
-            <div className="instruments-info">
-              <div>Time Played: </div>
-              <span>{empty(instrument.timeplayed)}</span>
-            </div>
+      <section className="section" key={instrument._id}>
+        <div>
+          <h1 className="title">{empty(instrument.instrument)}</h1>
+          <div className="content-info">
+            <div>Instrument Type: </div>
+            <span>{empty(instrument.instrumenttype)}</span>
           </div>
-          <Link
-            to={`/instruments/${instrument._id}`}
-            className="button is-danger is-small"
-            style={{ margin: 0 }}
-          >
-            Delete
-          </Link>
-        </section>
-      </React.Fragment>
+          <div className="content-info">
+            <div>Playing Style: </div>
+            <span>{empty(instrument.playingstyle)}</span>
+          </div>
+          <div className="content-info">
+            <div>Time Played: </div>
+            <span>{empty(instrument.timeplayed)}</span>
+          </div>
+        </div>
+        <Link
+          to={`/instruments/${instrument._id}`}
+          className="button is-danger is-small"
+          style={{ margin: 0 }}
+        >
+          Delete
+        </Link>
+      </section>
     );
   });
 

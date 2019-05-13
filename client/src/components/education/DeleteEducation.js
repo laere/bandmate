@@ -2,9 +2,9 @@ import React from "react";
 import Modal from "components/common/Modal";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
-import { deleteInstrument } from "actions/profileActions";
+import { deleteEducation } from "actions/profileActions";
 
-class InstrumentsDelete extends React.Component {
+class DeleteEducation extends React.Component {
   renderActions() {
     // console.log(this.props.match.params);
     const { id } = this.props.match.params;
@@ -12,11 +12,11 @@ class InstrumentsDelete extends React.Component {
       <React.Fragment>
         <button
           className="button is-danger"
-          onClick={() => this.props.deleteInstrument(id, this.props.history)}
+          onClick={() => this.props.deleteEducation(id, this.props.history)}
         >
           Delete
         </button>
-        <Link to={`/instruments`} className="button">
+        <Link to={`/education`} className="button">
           Cancel
         </Link>
       </React.Fragment>
@@ -27,8 +27,8 @@ class InstrumentsDelete extends React.Component {
     return (
       <React.Fragment>
         <Modal
-          title="Delete Instrument"
-          content="Are you sure you want to delete this instrument?"
+          title="Delete Education"
+          content="Are you sure you want to delete this education?"
           actions={this.renderActions()}
         />
       </React.Fragment>
@@ -38,5 +38,5 @@ class InstrumentsDelete extends React.Component {
 
 export default connect(
   null,
-  { deleteInstrument }
-)(withRouter(InstrumentsDelete));
+  { deleteEducation }
+)(withRouter(DeleteEducation));

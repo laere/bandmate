@@ -18,7 +18,7 @@ class AddEducationForm extends React.Component {
             degree: "",
             fieldofstudy: "",
             from: "",
-            to: "",
+            to: Date.now(),
             current: "",
             description: ""
           }}
