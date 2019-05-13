@@ -46,12 +46,15 @@ const ExperienceBody = ({ isLoading, experience }) => {
           </div>
         </div>
         <Link
-          to={`/experience/${exp._id}`}
+          to={`/experience/delete/${exp._id}`}
           className="button is-danger is-small button-delete"
         >
           Delete
         </Link>
-        <Link to={`/experience/${exp._id}`} className="button is-info is-small">
+        <Link
+          to={`/experience/edit/${exp._id}`}
+          className="button is-info is-small"
+        >
           Edit
         </Link>
       </section>

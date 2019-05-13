@@ -35,7 +35,7 @@ class Register extends React.Component {
                   className="help is-danger"
                   name="name"
                   component="div"
-                  style={{ fontSize: "24px" }}
+                  style={{ fontSize: "16px" }}
                 />
               </div>
               <div className="auth-form-inputwrapper">
@@ -50,7 +50,7 @@ class Register extends React.Component {
                   className="help is-danger"
                   name="email"
                   component="div"
-                  style={{ fontSize: "24px" }}
+                  style={{ fontSize: "16px" }}
                 />
               </div>
               <div className="auth-form-inputwrapper">
@@ -65,7 +65,7 @@ class Register extends React.Component {
                   className="help is-danger"
                   name="password"
                   component="div"
-                  style={{ fontSize: "24px" }}
+                  style={{ fontSize: "16px" }}
                 />
               </div>
               <button

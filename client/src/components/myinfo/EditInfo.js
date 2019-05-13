@@ -42,7 +42,7 @@ class EditInfo extends React.Component {
                 className="help is-danger"
                 name="username"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
               <label className="label">Email:</label>
               <Field
@@ -55,7 +55,7 @@ class EditInfo extends React.Component {
                 className="help is-danger"
                 name="email"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
               <label className="label">Location:</label>
               <Field
@@ -68,7 +68,7 @@ class EditInfo extends React.Component {
                 className="help is-danger"
                 name="location"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
               <label className="label">Gender:</label>
               <Field
@@ -87,7 +87,7 @@ class EditInfo extends React.Component {
                 className="help is-danger"
                 name="gender"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
               <label className="label">Bio:</label>
               <Field
@@ -101,7 +101,7 @@ class EditInfo extends React.Component {
                 className="help is-danger"
                 name="bio"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
               <button
                 type="submit"

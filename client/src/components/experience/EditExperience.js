@@ -1,12 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createExperience } from "actions/profileActions";
+import { editExperience } from "actions/profileActions";
 import { withRouter } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import experienceValidation from "frontValidation/experienceValidation";
 
-class AddExperienceForm extends React.Component {
+class EditExperience extends React.Component {
   render() {
+    const { id } = this.props.match.params;
+    const { experience } = this.props.profile;
     return (
       <div className="form">
         <h1 className="">Your experience:</h1>
@@ -20,11 +22,12 @@ class AddExperienceForm extends React.Component {
             description: "",
             current: false
           }}
+          enableReintialize={true}
           validate={values => experienceValidation(values)}
           onSubmit={(values, { setSubmitting }) => {
             console.log(values);
             setSubmitting(false);
-            this.props.createExperience(values, this.props.history);
+            this.props.editExperience(values, this.props.history);
           }}
         >
           {({ isSubmitting, handleChange, values }) => (
@@ -112,11 +115,11 @@ class AddExperienceForm extends React.Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => {
-  return { auth };
+const mapStateToProps = ({ profiles: { profile } }) => {
+  return { profile };
 };
 
 export default connect(
   mapStateToProps,
-  { createExperience }
-)(withRouter(AddExperienceForm));
+  { editExperience }
+)(withRouter(EditExperience));

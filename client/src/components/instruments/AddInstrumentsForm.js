@@ -10,6 +10,7 @@ class AddInstrumentsForm extends React.Component {
     return (
       <div className="form">
         <h1 className="">Your instruments:</h1>
+        <div>* is required field</div>
         <Formik
           initialValues={{
             instrument: "",
@@ -25,37 +26,37 @@ class AddInstrumentsForm extends React.Component {
         >
           {({ isSubmitting }) => (
             <Form>
-              <label className="label">Instrument:</label>
+              <label className="label">*Instrument:</label>
               <Field type="text" name="instrument" className="input" />
               <ErrorMessage
                 className="help is-danger"
                 name="instrument"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
-              <label className="label">Instrument Type:</label>
+              <label className="label">*Instrument Type:</label>
               <Field type="text" name="instrumenttype" className="input" />
               <ErrorMessage
                 className="help is-danger"
                 name="instrumenttype"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
-              <label className="label">Playing Style:</label>
+              <label className="label">*Playing Style:</label>
               <Field type="text" name="playingstyle" className="input" />
               <ErrorMessage
                 className="help is-danger"
                 name="playingstyle"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
-              <label className="label">Time Played:</label>
+              <label className="label">*Time Played:</label>
               <Field type="text" name="timeplayed" className="input" />
               <ErrorMessage
                 className="help is-danger"
                 name="timeplayed"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
               <button
                 type="submit"

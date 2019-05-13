@@ -61,7 +61,7 @@ export const createInstrument = (userData, history) => async dispatch => {
 export const deleteInstrument = (id, history) => async dispatch => {
   dispatch(isLoading());
 
-  const res = await axios.delete(`/api/profiles/instruments/${id}`);
+  const res = await axios.delete(`/api/profiles/instruments/delete/${id}`);
 
   history.push("/instruments");
 
@@ -71,7 +71,7 @@ export const deleteInstrument = (id, history) => async dispatch => {
 export const deleteExperience = (id, history) => async dispatch => {
   dispatch(isLoading());
 
-  const res = await axios.delete(`/api/profiles/experience/${id}`);
+  const res = await axios.delete(`/api/profiles/experience/delete/${id}`);
 
   history.push("/experience");
 
@@ -81,7 +81,23 @@ export const deleteExperience = (id, history) => async dispatch => {
 export const deleteEducation = (id, history) => async dispatch => {
   dispatch(isLoading());
 
-  const res = await axios.delete(`/api/profiles/education/${id}`);
+  const res = await axios.delete(`/api/profiles/education/delete/${id}`);
+
+  history.push("/education");
+
+  dispatch({ type: FETCH_PROFILE, payload: res.data });
+};
+
+export const editExperience = (userData, id, history) => async dispatch => {
+  const res = await axios.put(`/api/profiles/experience/edit/${id}`, userData);
+
+  history.push("/experience");
+
+  dispatch({ type: FETCH_PROFILE, payload: res.data });
+};
+
+export const editEducation = (userData, id, history) => async dispatch => {
+  const res = await axios.put(`/api/profiles/education/edit/${id}`, userData);
 
   history.push("/education");
 

@@ -50,7 +50,7 @@ class App extends React.Component {
             />
             <PrivateRoute
               exact
-              path="/education/:id"
+              path="/education/delete/:id"
               component={DeleteEducation}
             />
 
@@ -62,7 +62,7 @@ class App extends React.Component {
             />
             <PrivateRoute
               exact
-              path="/experience/:id"
+              path="/experience/delete/:id"
               component={DeleteExperience}
             />
 
@@ -74,7 +74,7 @@ class App extends React.Component {
             />
             <PrivateRoute
               exact
-              path="/instruments/:id"
+              path="/instruments/delete/:id"
               component={DeleteInstrument}
             />
           </div>

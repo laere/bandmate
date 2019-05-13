@@ -41,7 +41,7 @@ class AddEducationForm extends React.Component {
                 className="help is-danger"
                 name="school"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
               <label className="label">*Degree:</label>
               <Field
@@ -54,7 +54,7 @@ class AddEducationForm extends React.Component {
                 className="help is-danger"
                 name="degree"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
               <label className="label">*Field of Study:</label>
               <Field
@@ -67,7 +67,7 @@ class AddEducationForm extends React.Component {
                 className="help is-danger"
                 name="fieldofstudy"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
               <label className="label">*From:</label>
               <Field
@@ -81,7 +81,7 @@ class AddEducationForm extends React.Component {
                 className="help is-danger"
                 name="from"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
               <label className="label">To:</label>
               <Field
@@ -95,7 +95,7 @@ class AddEducationForm extends React.Component {
                 className="help is-danger"
                 name="to"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
               <label className="label">Current:</label>
               <Field
@@ -112,7 +112,7 @@ class AddEducationForm extends React.Component {
                 className="help is-danger"
                 name="current"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
               <label className="label">Description:</label>
               <Field
@@ -126,7 +126,7 @@ class AddEducationForm extends React.Component {
                 className="help is-danger"
                 name="description"
                 component="div"
-                style={{ fontSize: "24px" }}
+                style={{ fontSize: "16px" }}
               />
               <button
                 type="submit"

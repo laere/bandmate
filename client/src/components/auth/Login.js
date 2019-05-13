@@ -41,7 +41,7 @@ class Login extends React.Component {
                   className="help is-danger"
                   name="email"
                   component="div"
-                  style={{ fontSize: "24px" }}
+                  style={{ fontSize: "16px" }}
                 />
               </div>
               <div className="auth-form-inputwrapper">
@@ -56,7 +56,7 @@ class Login extends React.Component {
                   className="help is-danger"
                   name="password"
                   component="div"
-                  style={{ fontSize: "24px" }}
+                  style={{ fontSize: "16px" }}
                 />
               </div>
               <button

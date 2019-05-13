@@ -49,14 +49,14 @@ const EducationBody = ({ isLoading, education }) => {
           </div>
         </div>
         <Link
-          to={`/education/${edu._id}`}
+          to={`/education/delete/${edu._id}`}
           className="button is-danger is-small button-delete"
           style={{ marginRight: "10px" }}
         >
           Delete
         </Link>
         <Link
-          to={`/education/${edu._id}`}
+          to={`/education/edit/${edu._id}`}
           className="button is-info is-small"
           style={{ margin: 0 }}
         >
