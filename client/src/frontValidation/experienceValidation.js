@@ -1,3 +1,5 @@
+import validateURL from "frontValidation/validateURL";
+
 const experienceValidation = values => {
   let errors = {};
 
@@ -12,6 +14,10 @@ const experienceValidation = values => {
       errors[key] = `${name} is required.`;
     } else if (val.length < valLen) {
       errors[key] = `${name} must be at least ${valLen} characters long.`;
+    } else if (name.includes("website")) {
+      if (!validateURL(val)) {
+        errors[key] = `${name} must be a valid URL.`;
+      }
     }
   };
 
@@ -23,6 +29,7 @@ const experienceValidation = values => {
     "Instruments played",
     2
   );
+  required(values.bandwebsite, "bandwebsite", "Band website", 2);
 
   return errors;
 };

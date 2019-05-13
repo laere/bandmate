@@ -1,5 +1,5 @@
-.button {
-  margin: 0 10px;
+.button-delete {
+  margin-right: 10px;
 }
 
 .button-auth {
@@ -7,9 +7,9 @@
   display: block;
 }
 
-.label {
+/* .label {
   margin: 30px;
-}
+} */
 
 .input {
   width: 500px;
@@ -22,7 +22,28 @@
 }
 
 .section {
-  margin-right: 30px;
+  background-color: yellow;
+  flex: 1;
+}
+
+/**************************************/
+/*********AUTH FORMS
+/**************************************/
+
+.auth-form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.auth-form-title {
+  text-align: center;
+}
+
+.auth-form-inputwrapper {
+  margin: 40px 0;
 }
 
 /**************************************/
@@ -93,41 +114,46 @@
   margin-top: 50px;
 }
 
-.dashboard-content {
+.myinfo-body {
+  margin-top: 50px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.dashboard-content span {
-  margin-left: 20px;
+.myinfo-content {
+  margin-bottom: 30px;
+}
+
+.myinfo-title {
+  margin-right: 15px;
+  font-size: 36px;
+}
+
+.myinfo-content span {
+  font-size: 24px;
+  font-weight: 100;
 }
 
 .instruments-body,
-.myinfo-body,
 .experience-body,
 .education-body {
   margin-top: 50px;
   display: flex;
   flex-direction: column wrap;
+  justify-content: space-between;
   align-items: center;
   width: 90%;
   background-color: lightgreen;
 }
 
-/* .myinfo-body div,
-.experience-body div {
-  margin: 20px 0;
-  font-size: 20px;
-} */
-
 .content-info {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-start; */
   margin-bottom: 20px;
 }
 
 .content-info span {
-  margin-left: 15px;
+  margin-right: 15px;
 }

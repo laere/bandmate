@@ -18,15 +18,15 @@ const InstrumentsBody = ({ isLoading, instruments }) => {
         <div>
           <h1 className="title">{empty(instrument.instrument)}</h1>
           <div className="content-info">
-            <div>Instrument Type: </div>
+            <div className="subtitle">Instrument Type: </div>
             <span>{empty(instrument.instrumenttype)}</span>
           </div>
           <div className="content-info">
-            <div>Playing Style: </div>
+            <div className="subtitle">Playing Style: </div>
             <span>{empty(instrument.playingstyle)}</span>
           </div>
           <div className="content-info">
-            <div>Time Played: </div>
+            <div className="subtitle">Time Played: </div>
             <span>{empty(instrument.timeplayed)}</span>
           </div>
         </div>

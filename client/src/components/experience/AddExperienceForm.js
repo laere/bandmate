@@ -16,10 +16,11 @@ class AddExperienceForm extends React.Component {
             timeplayedwith: "",
             instrumentsplayed: "",
             description: "",
-            current: ""
+            current: false
           }}
           validate={values => experienceValidation(values)}
           onSubmit={(values, { setSubmitting }) => {
+            console.log(values);
             setSubmitting(false);
             this.props.createExperience(values, this.props.history);
           }}
@@ -68,8 +69,8 @@ class AddExperienceForm extends React.Component {
                 onChange={handleChange}
                 value={values.current}
               >
-                <option value="false">false</option>
-                <option value="true">true</option>
+                <option value={false}>false</option>
+                <option value={true}>true</option>
               </Field>
               <ErrorMessage
                 className="help is-danger"

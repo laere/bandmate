@@ -8,8 +8,10 @@ import registerValidation from "frontValidation/registerValidation";
 class Register extends React.Component {
   render() {
     return (
-      <div className="budget-new">
-        <h1 className="title is-3">Register to start a band!</h1>
+      <div className="auth-form">
+        <h1 className="title is-3 auth-form-title">
+          Register to start a band!
+        </h1>
         <Formik
           initialValues={{ username: "", email: "", password: "" }}
           validate={values => registerValidation(values)}
@@ -21,46 +23,51 @@ class Register extends React.Component {
         >
           {({ isSubmitting, values }) => (
             <Form>
-              <label className="label">Username:</label>
-              <Field
-                type="text"
-                name="username"
-                value={values.username}
-                className="input"
-              />
-              <ErrorMessage
-                className="help is-danger"
-                name="name"
-                component="div"
-                style={{ fontSize: "24px" }}
-              />
-              <label className="label">Email:</label>
-              <Field
-                type="text"
-                name="email"
-                value={values.email}
-                className="input"
-              />
-              <ErrorMessage
-                className="help is-danger"
-                name="email"
-                component="div"
-                style={{ fontSize: "24px" }}
-              />
-              <label className="label">Password:</label>
-              <Field
-                type="text"
-                name="password"
-                value={values.password}
-                className="input"
-              />
-              <ErrorMessage
-                className="help is-danger"
-                name="password"
-                component="div"
-                style={{ fontSize: "24px" }}
-              />
-
+              <div className="auth-form-inputwrapper">
+                <label className="label">Username:</label>
+                <Field
+                  type="text"
+                  name="username"
+                  value={values.username}
+                  className="input"
+                />
+                <ErrorMessage
+                  className="help is-danger"
+                  name="name"
+                  component="div"
+                  style={{ fontSize: "24px" }}
+                />
+              </div>
+              <div className="auth-form-inputwrapper">
+                <label className="label">Email:</label>
+                <Field
+                  type="text"
+                  name="email"
+                  value={values.email}
+                  className="input"
+                />
+                <ErrorMessage
+                  className="help is-danger"
+                  name="email"
+                  component="div"
+                  style={{ fontSize: "24px" }}
+                />
+              </div>
+              <div className="auth-form-inputwrapper">
+                <label className="label">Password:</label>
+                <Field
+                  type="text"
+                  name="password"
+                  value={values.password}
+                  className="input"
+                />
+                <ErrorMessage
+                  className="help is-danger"
+                  name="password"
+                  component="div"
+                  style={{ fontSize: "24px" }}
+                />
+              </div>
               <button
                 type="submit"
                 className="button is-primary is-large button-auth"

@@ -17,13 +17,12 @@ const ExperienceBody = ({ isLoading, experience }) => {
     return (
       <section className="section" key={exp._key}>
         <div>
-          <div className="content-info">
-            <div>Band Name:</div>
-            <span>{empty(exp.bandname)}</span>
-          </div>
+          <h1 className="title">{empty(exp.bandname)}</h1>
           <div className="content-info">
             <div>Band Website:</div>
-            <span>{empty(exp.bandwebsite)}</span>
+            <a href={empty(exp.bandwebsite)} style={{ marginLeft: "15px" }}>
+              {empty(exp.bandname)}
+            </a>
           </div>
           <div className="content-info">
             <div>Time with band:</div>
@@ -43,21 +42,16 @@ const ExperienceBody = ({ isLoading, experience }) => {
           </div>
           <div className="content-info">
             <div>Current:</div>
-            <span>{empty(exp.current)}</span>
+            <span>{empty(exp.current.toString())}</span>
           </div>
         </div>
         <Link
           to={`/experience/${exp._id}`}
-          className="button is-danger is-small"
-          style={{ margin: 0 }}
+          className="button is-danger is-small button-delete"
         >
           Delete
         </Link>
-        <Link
-          to={`/experience/${exp._id}`}
-          className="button is-info is-small"
-          style={{ margin: 0 }}
-        >
+        <Link to={`/experience/${exp._id}`} className="button is-info is-small">
           Edit
         </Link>
       </section>

@@ -17,10 +17,8 @@ const EducationBody = ({ isLoading, education }) => {
     return (
       <section className="section" key={edu._key}>
         <div>
-          <div className="content-info">
-            <div>School:</div>
-            <span>{empty(edu.school)}</span>
-          </div>
+          <h1 className="title">{empty(edu.school)}</h1>
+
           <div className="content-info">
             <div>Degree:</div>
             <span>{empty(edu.degree)}</span>
@@ -52,8 +50,8 @@ const EducationBody = ({ isLoading, education }) => {
         </div>
         <Link
           to={`/education/${edu._id}`}
-          className="button is-danger is-small"
-          style={{ margin: 0 }}
+          className="button is-danger is-small button-delete"
+          style={{ marginRight: "10px" }}
         >
           Delete
         </Link>

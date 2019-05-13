@@ -9,7 +9,8 @@ function validateExperience(experience) {
         .required(),
       bandwebsite: Joi.string()
         .min(2)
-        .max(50),
+        .max(50)
+        .uri(),
       timeplayedwith: Joi.string()
         .min(2)
         .max(50)
