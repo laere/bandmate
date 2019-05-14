@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { createEducation } from "actions/profileActions";
 import { withRouter } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import Moment from "react-moment";
 import educationValidation from "frontValidation/educationValidation";
 
 class AddEducationForm extends React.Component {
@@ -72,9 +73,8 @@ class AddEducationForm extends React.Component {
               <label className="label">*From:</label>
               <Field
                 name="from"
-                render={({ field }) => (
-                  <input {...field} type="datetime-local" className="input" />
-                )}
+                type="date"
+                className="input"
                 value={values.from}
               />
               <ErrorMessage
@@ -86,9 +86,9 @@ class AddEducationForm extends React.Component {
               <label className="label">To:</label>
               <Field
                 name="to"
-                render={({ field }) => (
-                  <input {...field} type="datetime-local" className="input" />
-                )}
+                type="date"
+                className="input"
+                disabled={values.current ? "disabled" : false}
                 value={values.to}
               />
               <ErrorMessage

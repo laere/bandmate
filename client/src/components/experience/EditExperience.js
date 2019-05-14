@@ -3,31 +3,50 @@ import { connect } from "react-redux";
 import { editExperience } from "actions/profileActions";
 import { withRouter } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import Spinner from "components/common/Spinner";
 import experienceValidation from "frontValidation/experienceValidation";
 
 class EditExperience extends React.Component {
   render() {
     const { id } = this.props.match.params;
     const { experience } = this.props.profile;
+
+    if (!experience) {
+      return <Spinner />;
+    }
+
+    const currentExp = experience.find(exp => exp._id === id);
+
+    const {
+      bandname,
+      bandwebsite,
+      timeplayedwith,
+      instrumentsplayed,
+      description,
+      current
+    } = currentExp;
+
+    console.log(instrumentsplayed);
+
     return (
       <div className="form">
         <h1 className="">Your experience:</h1>
         <div>* is required field</div>
         <Formik
           initialValues={{
-            bandname: "",
-            bandwebsite: "",
-            timeplayedwith: "",
-            instrumentsplayed: "",
-            description: "",
-            current: false
+            bandname,
+            bandwebsite,
+            timeplayedwith,
+            instrumentsplayed,
+            description,
+            current
           }}
           enableReintialize={true}
           validate={values => experienceValidation(values)}
           onSubmit={(values, { setSubmitting }) => {
             console.log(values);
             setSubmitting(false);
-            this.props.editExperience(values, this.props.history);
+            this.props.editExperience(values, id, this.props.history);
           }}
         >
           {({ isSubmitting, handleChange, values }) => (

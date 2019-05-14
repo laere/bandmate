@@ -3,66 +3,122 @@ import { connect } from "react-redux";
 import { editEducation } from "actions/profileActions";
 import { withRouter } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import experienceValidation from "frontValidation/experienceValidation";
+import Spinner from "components/common/Spinner";
+import Moment from "react-moment";
+import educationValidation from "frontValidation/educationValidation";
 
 class EditEducation extends React.Component {
   render() {
     const { id } = this.props.match.params;
     const { education } = this.props.profile;
+
+    if (!education) {
+      return <Spinner />;
+    }
+
+    const currentEdu = education.find(edu => edu._id === id);
+
+    const {
+      school,
+      degree,
+      fieldofstudy,
+      from,
+      to,
+      current,
+      description
+    } = currentEdu;
+
+    console.log("Edit", education);
+
+    console.log(currentEdu);
+
     return (
       <div className="form">
-        <h1 className="">Your experience:</h1>
+        <h1 className="">Your education:</h1>
         <div>* is required field</div>
         <Formik
           initialValues={{
-            bandname: "",
-            bandwebsite: "",
-            timeplayedwith: "",
-            instrumentsplayed: "",
-            description: "",
-            current: false
+            school,
+            degree,
+            fieldofstudy,
+            from,
+            to,
+            current,
+            description
           }}
           enableReintialize={true}
-          validate={values => experienceValidation(values)}
+          validate={values => educationValidation(values)}
           onSubmit={(values, { setSubmitting }) => {
             console.log(values);
             setSubmitting(false);
-            this.props.editEducation(values, this.props.history);
+            this.props.editEducation(values, id, this.props.history);
           }}
         >
           {({ isSubmitting, handleChange, values }) => (
             <Form>
-              <label className="label">*Band Name:</label>
-              <Field type="text" name="bandname" className="input" />
+              <label className="label">*School:</label>
+              <Field
+                type="text"
+                name="school"
+                className="input"
+                value={values.school}
+              />
               <ErrorMessage
                 className="help is-danger"
-                name="bandname"
+                name="school"
                 component="div"
                 style={{ fontSize: "16px" }}
               />
-              <label className="label">*Band Website:</label>
-              <Field type="text" name="bandwebsite" className="input" />
+              <label className="label">*Degree:</label>
+              <Field
+                type="text"
+                name="degree"
+                className="input"
+                value={values.degree}
+              />
               <ErrorMessage
                 className="help is-danger"
-                name="bandwebsite"
+                name="degree"
                 component="div"
                 style={{ fontSize: "16px" }}
               />
-              <label className="label">
-                *How long did you play with this band?
-              </label>
-              <Field type="text" name="timeplayedwith" className="input" />
+              <label className="label">*Field of Study:</label>
+              <Field
+                type="text"
+                name="fieldofstudy"
+                className="input"
+                value={values.fieldofstudy}
+              />
               <ErrorMessage
                 className="help is-danger"
-                name="timeplayedwith"
+                name="fieldofstudy"
                 component="div"
                 style={{ fontSize: "16px" }}
               />
-              <label className="label">*Instruments Played:</label>
-              <Field type="text" name="instrumentsplayed" className="input" />
+              <label className="label">*From:</label>
+              <Field
+                name="from"
+                type="date"
+                className="input"
+                value={values.from}
+              />
               <ErrorMessage
                 className="help is-danger"
-                name="instrumentsplayed"
+                name="from"
+                component="div"
+                style={{ fontSize: "16px" }}
+              />
+              <label className="label">To:</label>
+              <Field
+                name="to"
+                type="date"
+                className="input"
+                value={values.to}
+                disabled={current ? "disabled" : false}
+              />
+              <ErrorMessage
+                className="help is-danger"
+                name="to"
                 component="div"
                 style={{ fontSize: "16px" }}
               />
@@ -74,8 +130,8 @@ class EditEducation extends React.Component {
                 onChange={handleChange}
                 value={values.current}
               >
-                <option value={false}>false</option>
-                <option value={true}>true</option>
+                <option value="false">false</option>
+                <option value="true">true</option>
               </Field>
               <ErrorMessage
                 className="help is-danger"
@@ -83,12 +139,12 @@ class EditEducation extends React.Component {
                 component="div"
                 style={{ fontSize: "16px" }}
               />
-
               <label className="label">Description:</label>
               <Field
                 component="textarea"
                 name="description"
                 className="input"
+                value={values.description}
                 style={{ height: "200px" }}
               />
               <ErrorMessage
@@ -97,7 +153,6 @@ class EditEducation extends React.Component {
                 component="div"
                 style={{ fontSize: "16px" }}
               />
-
               <button
                 type="submit"
                 className="button is-primary is-large button-auth"

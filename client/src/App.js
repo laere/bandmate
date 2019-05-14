@@ -17,14 +17,17 @@ import EditInfo from "components/myinfo/EditInfo";
 import Education from "components/education/Education";
 import AddEducationForm from "components/education/AddEducationForm";
 import DeleteEducation from "components/education/DeleteEducation";
+import EditEducation from "components/education/EditEducation";
 
 import Experience from "components/experience/Experience";
 import AddExperienceForm from "components/experience/AddExperienceForm";
 import DeleteExperience from "components/experience/DeleteExperience";
+import EditExperience from "components/experience/EditExperience";
 
 import Instruments from "components/instruments/Instruments";
 import AddInstrumentsForm from "components/instruments/AddInstrumentsForm";
 import DeleteInstrument from "components/instruments/DeleteInstrument";
+import EditInstrument from "components/instruments/EditInstrument";
 
 import Search from "components/search/Search";
 
@@ -53,6 +56,11 @@ class App extends React.Component {
               path="/education/delete/:id"
               component={DeleteEducation}
             />
+            <PrivateRoute
+              exact
+              path="/education/edit/:id"
+              component={EditEducation}
+            />
 
             <PrivateRoute exact path="/experience" component={Experience} />
             <PrivateRoute
@@ -65,6 +73,11 @@ class App extends React.Component {
               path="/experience/delete/:id"
               component={DeleteExperience}
             />
+            <PrivateRoute
+              exact
+              path="/experience/edit/:id"
+              component={EditExperience}
+            />
 
             <PrivateRoute exact path="/instruments" component={Instruments} />
             <PrivateRoute
@@ -76,6 +89,11 @@ class App extends React.Component {
               exact
               path="/instruments/delete/:id"
               component={DeleteInstrument}
+            />
+            <PrivateRoute
+              exact
+              path="/instruments/edit/:id"
+              component={EditInstrument}
             />
           </div>
           <Route exact path="/" component={LandingPage} />

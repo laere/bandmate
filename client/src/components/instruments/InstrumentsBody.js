@@ -32,10 +32,16 @@ const InstrumentsBody = ({ isLoading, instruments }) => {
         </div>
         <Link
           to={`/instruments/delete/${instrument._id}`}
-          className="button is-danger is-small"
+          className="button is-danger is-small button-delete"
           style={{ margin: 0 }}
         >
           Delete
+        </Link>
+        <Link
+          to={`/instruments/edit/${instrument._id}`}
+          className="button is-info is-small"
+        >
+          Edit
         </Link>
       </section>
     );

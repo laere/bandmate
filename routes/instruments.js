@@ -47,7 +47,8 @@ router.delete(
 
 router.put(
   "/:instrumentId",
-  myAsync(async (req, res, nex) => {
+  myAsync(async (req, res, next) => {
+    console.log(req.body);
     const { error } = validateInstrument(req.body);
     if (error) {
       res.status(400).send(error.details[0].message);

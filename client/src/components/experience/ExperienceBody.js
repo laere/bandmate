@@ -15,13 +15,13 @@ const ExperienceBody = ({ isLoading, experience }) => {
 
   const content = experience.map(exp => {
     return (
-      <section className="section" key={exp._key}>
+      <section className="section" key={exp._id}>
         <div>
           <h1 className="title">{empty(exp.bandname)}</h1>
           <div className="content-info">
             <div>Band Website:</div>
             <a href={empty(exp.bandwebsite)} style={{ marginLeft: "15px" }}>
-              {empty(exp.bandname)}
+              {empty(exp.bandwebsite)}
             </a>
           </div>
           <div className="content-info">

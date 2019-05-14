@@ -5,17 +5,13 @@ import Spinner from "components/common/Spinner";
 import Moment from "react-moment";
 
 const EducationBody = ({ isLoading, education }) => {
-  if (isLoading) {
-    return <Spinner />;
-  }
-
   if (!education) {
-    return <h1>You currently have no education!</h1>;
+    return <Spinner />;
   }
 
   const content = education.map(edu => {
     return (
-      <section className="section" key={edu._key}>
+      <section className="section" key={edu._id}>
         <div>
           <h1 className="title">{empty(edu.school)}</h1>
 
@@ -41,7 +37,7 @@ const EducationBody = ({ isLoading, education }) => {
           </div>
           <div className="content-info">
             <div>Current:</div>
-            <span>{empty(edu.current)}</span>
+            <span>{empty(edu.current.toString())}</span>
           </div>
           <div className="content-info">
             <div>Description:</div>
