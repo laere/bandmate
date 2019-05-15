@@ -1,28 +1,15 @@
-##Things To Do
+#Things To Do#
 
-##Testing
+Testing (Unit and Integration)
 
-<!-- _Unit_
-**Models**
-User:
+Work on separation of concerns.
 
-Return valid jwt
-Return user object
+Refactor DRY code and components.
 
-Profile:
+Decide on a music API to use for fetching a list of bands and music genres.
 
-Return profile object -->
+Add search functionality so users can look up profiles based on particular filters.
 
-_Integration_
+Figure out how to better implement dates, using a Date Picker component may be a good solution to this.
 
-**User Routes**
-**Profile Routes**
-
-##Routes
-
-**Adding/Removing/Editing Education
-**Adding/Removing/Editing Experience
-**Adding/Removing/Editing Instruments
-**Adding/Removing/Editing Social
-**Adding/Removing Favorite Genres
-**Adding/Removing Favorite Bands
+Implement a recommendation system. This can be done using BFS with Dijkstra's algorithm.

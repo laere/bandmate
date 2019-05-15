@@ -1,3 +1,4 @@
+const Band = require("./Band");
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
@@ -167,6 +168,14 @@ const profileSchema = new Schema({
   instruments: [instrumentSchema], // schema
   experience: [experienceSchema], // schema
   education: [educationSchema], // schema
+  mybands: [
+    {
+      band: {
+        type: Schema.Types.ObjectId,
+        ref: "Band"
+      }
+    }
+  ],
   social: socialSchema,
   datecreated: {
     type: Date,

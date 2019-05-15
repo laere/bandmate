@@ -15,6 +15,7 @@ const favoriteGenres = require("./routes/favoriteGenres");
 const instruments = require("./routes/instruments");
 const education = require("./routes/education");
 const experience = require("./routes/experience");
+const mybands = require("./routes/mybands");
 
 mongoose.connect(
   keys.mongoURI,
@@ -36,6 +37,7 @@ app.use("/api/profiles/favorites/genres", passportAuth, favoriteGenres);
 app.use("/api/profiles/instruments", passportAuth, instruments);
 app.use("/api/profiles/education", passportAuth, education);
 app.use("/api/profiles/experience", passportAuth, experience);
+app.use("/api/profiles/mybands", passportAuth, mybands);
 
 // app.use(function(err, req, res, next) {
 //   console.error(err.statusCode, err.message);

@@ -25,6 +25,7 @@ class AddEducationForm extends React.Component {
           }}
           validate={values => educationValidation(values)}
           onSubmit={(values, { setSubmitting }) => {
+            console.log(values);
             setSubmitting(false);
             this.props.createEducation(values, this.props.history);
           }}

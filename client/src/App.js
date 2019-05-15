@@ -29,6 +29,9 @@ import AddInstrumentsForm from "components/instruments/AddInstrumentsForm";
 import DeleteInstrument from "components/instruments/DeleteInstrument";
 import EditInstrument from "components/instruments/EditInstrument";
 
+import MyBand from "components/mybands/MyBand";
+import AddMyBandForm from "components/mybands/AddMyBandForm";
+
 import Search from "components/search/Search";
 
 import "./App.css";
@@ -94,6 +97,13 @@ class App extends React.Component {
               exact
               path="/instruments/edit/:id"
               component={EditInstrument}
+            />
+
+            <PrivateRoute exact path="/mybands" component={MyBand} />
+            <PrivateRoute
+              exact
+              path="/mybands/add-band"
+              component={AddMyBandForm}
             />
           </div>
           <Route exact path="/" component={LandingPage} />

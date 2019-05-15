@@ -8,6 +8,7 @@ import Moment from "react-moment";
 import educationValidation from "frontValidation/educationValidation";
 
 class EditEducation extends React.Component {
+  // ComponentDidUpdate {}
   render() {
     const { id } = this.props.match.params;
     const { education } = this.props.profile;
@@ -114,7 +115,7 @@ class EditEducation extends React.Component {
                 type="date"
                 className="input"
                 value={values.to}
-                disabled={current ? "disabled" : false}
+                disabled={current ? "disabled" : ""}
               />
               <ErrorMessage
                 className="help is-danger"
