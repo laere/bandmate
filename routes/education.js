@@ -10,13 +10,12 @@ router.post(
   myAsync(async (req, res, next) => {
     const { error } = validateEducation(req.body);
     if (error) {
-      res.status(400).send(error.details[0].message);
-      next();
+      return res.status(400).send(error.details[0].message);
     }
 
     let profile = await Profile.findOne({ user: req.user.id });
 
-    if (!profile) next(errors.processReq);
+    if (!profile) return next(errors.processReq);
 
     profile.education.push(req.body);
 
@@ -31,11 +30,11 @@ router.delete(
   myAsync(async (req, res, next) => {
     let profile = await Profile.findOne({ user: req.user.id });
 
-    if (!profile) next(errors.processReq);
+    if (!profile) return next(errors.processReq);
 
     let education = profile.education.id(req.params.educationId);
 
-    if (!education) next(errors.processReq);
+    if (!education) return next(errors.processReq);
 
     education.remove();
 
@@ -50,17 +49,16 @@ router.put(
   myAsync(async (req, res, next) => {
     const { error } = validateEducation(req.body);
     if (error) {
-      res.status(400).send(error.details[0].message);
-      next();
+      return res.status(400).send(error.details[0].message);
     }
 
     let profile = await Profile.findOneAndUpdate({ user: req.user.id });
 
-    if (!profile) next(errors.processReq);
+    if (!profile) return next(errors.processReq);
 
     let education = profile.education.id(req.params.educationId);
 
-    if (!education) next(errors.processReq);
+    if (!education) return next(errors.processReq);
 
     education.set(req.body);
 

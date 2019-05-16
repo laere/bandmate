@@ -9,8 +9,7 @@ function validateBand(band) {
         .required(),
       bandwebsite: Joi.string()
         .min(2)
-        .max(50)
-        .required(),
+        .max(50),
       genre: Joi.string()
         .min(2)
         .max(50)

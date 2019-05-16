@@ -45,7 +45,7 @@ router.post(
     // check if user email already exists.
     user = await User.findOne({ email });
 
-    if (user) next(errors.processReq);
+    if (user) return next(errors.processReq);
 
     // If req makes it past both checks it must be valid and non existant
     user = new User({ username, email, password, avatar });
@@ -70,11 +70,11 @@ router.post(
 
     let user = await User.findOne({ email });
 
-    if (!user) next(errors.processReq);
+    if (!user) return next(errors.processReq);
 
     const validPassword = await bcrypt.compare(password, user.password);
 
-    if (!validPassword) next(errors.processReq);
+    if (!validPassword) return next(errors.processReq);
 
     const token = user.generateAuthToken();
 
@@ -91,7 +91,7 @@ router.get(
   myAsync(async (req, res, next) => {
     const user = await User.findOne({ user: req.user.id });
 
-    if (!user) next(errors.userNotFound);
+    if (!user) return next(errors.userNotFound);
 
     res.send(user);
   })
@@ -107,7 +107,7 @@ router.delete(
     // find and delete profile first
     let profile = await Profile.findOneAndRemove({ user: req.user.id });
 
-    if (!profile) next(errors.processReq);
+    if (!profile) return next(errors.processReq);
     // find and delete user afterwards
     let user = await User.findOneAndRemove({ user: req.user.id });
 

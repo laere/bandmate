@@ -11,13 +11,12 @@ router.post(
     const { error } = validateExperience(req.body);
     console.log(error);
     if (error) {
-      res.status(400).send(error.details[0].message);
-      next();
+      return res.status(400).send(error.details[0].message);
     }
 
     let profile = await Profile.findOne({ user: req.user.id });
 
-    if (!profile) next(errors.processReq);
+    if (!profile) return next(errors.processReq);
 
     const experienceProps = {
       ...req.body,
@@ -39,7 +38,7 @@ router.delete(
   myAsync(async (req, res, next) => {
     let profile = await Profile.findOne({ user: req.user.id });
 
-    if (!profile) next(errors.processReq);
+    if (!profile) return next(errors.processReq);
 
     let experience = profile.experience.id(req.params.experienceId);
 
@@ -56,13 +55,12 @@ router.put(
   myAsync(async (req, res, next) => {
     const { error } = validateExperience(req.body);
     if (error) {
-      res.status(400).send(error.details[0].message);
-      next();
+      return res.status(400).send(error.details[0].message);
     }
 
     let profile = await Profile.findOne({ user: req.user.id });
 
-    if (!profile) next(errors.processReq);
+    if (!profile) return next(errors.processReq);
 
     let experience = profile.experience.id(req.params.experienceId);
 

@@ -4,44 +4,41 @@ const myAsync = require("../middleware/async");
 const validateBand = require("../validation/bandValidation");
 const errors = require("../errors/errors");
 const Profile = require("../models/Profile");
+const Band = require("../models/Band");
 
 router.post(
   "/",
   myAsync(async (req, res, next) => {
+    console.log(req.body);
     const { error } = validateBand(req.body);
-    console.log(error);
     if (error) {
-      res.status(400).send(error.details[0].message);
-      next();
+      return res.status(400).send(error.details[0].message);
     }
 
     let profile = await Profile.findOne({ user: req.user.id });
 
-    if (!profile) next(errors.processReq);
+    if (!profile) return next(errors.processReq);
 
-    const experienceProps = {
-      ...req.body,
-      instrumentsplayed: req.body.instrumentsplayed.split(",")
-    };
+    let band = new Band({
+      ...req.body
+    });
 
-    profile.experience.push(experienceProps);
+    await band.save();
 
-    await profile.save();
-
-    console.log(profile);
+    profile.mybands.push(band);
 
     res.send(profile);
   })
 );
 
 router.delete(
-  "/:experienceId",
+  "/:bandId",
   myAsync(async (req, res, next) => {
     let profile = await Profile.findOne({ user: req.user.id });
 
-    if (!profile) next(errors.processReq);
+    if (!profile) return next(errors.processReq);
 
-    let experience = profile.experience.id(req.params.experienceId);
+    let experience = profile.experience.id(req.params.bandId);
 
     experience.remove();
 
@@ -52,19 +49,18 @@ router.delete(
 );
 
 router.put(
-  "/:experienceId",
+  "/:bandId",
   myAsync(async (req, res, next) => {
     const { error } = validateBand(req.body);
     if (error) {
-      res.status(400).send(error.details[0].message);
-      next();
+      return res.status(400).send(error.details[0].message);
     }
 
     let profile = await Profile.findOne({ user: req.user.id });
 
-    if (!profile) next(errors.processReq);
+    if (!profile) return next(errors.processReq);
 
-    let experience = profile.experience.id(req.params.experienceId);
+    let experience = profile.experience.id(req.params.bandId);
 
     experience.set(req.body);
 
@@ -73,5 +69,7 @@ router.put(
     res.send(profile);
   })
 );
+
+router.get("/", myAsync(async (req, res, next) => {}));
 
 module.exports = router;

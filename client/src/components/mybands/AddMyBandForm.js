@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createExperience } from "actions/profileActions";
+import { createBand } from "actions/profileActions";
 import { withRouter } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import bandValidation from "frontValidation/bandValidation";
@@ -22,7 +22,7 @@ class AddMyBandForm extends React.Component {
           onSubmit={(values, { setSubmitting }) => {
             console.log(values);
             setSubmitting(false);
-            this.props.createExperience(values, this.props.history);
+            this.props.createBand(values, this.props.history);
           }}
         >
           {({ isSubmitting, handleChange, values }) => (
@@ -88,5 +88,5 @@ const mapStateToProps = ({ auth }) => {
 
 export default connect(
   mapStateToProps,
-  { createExperience }
+  { createBand }
 )(withRouter(AddMyBandForm));

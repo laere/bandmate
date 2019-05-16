@@ -115,9 +115,9 @@ export const editInstrument = (userData, id, history) => async dispatch => {
 };
 
 export const createBand = (userData, history) => async dispatch => {
-  const res = await axios.post("/api/profiles/education", userData);
+  const res = await axios.post("/api/profiles/mybands", userData);
 
-  history.push("/education");
+  history.push("/mybands");
 
   dispatch({ type: FETCH_PROFILE, payload: res.data });
 };

@@ -10,13 +10,12 @@ router.post(
   myAsync(async (req, res, next) => {
     const { error } = validateInstrument(req.body);
     if (error) {
-      res.status(400).send(error.details[0].message);
-      next();
+      return res.status(400).send(error.details[0].message);
     }
 
     let profile = await Profile.findOne({ user: req.user.id });
 
-    if (!profile) next(errors.processReq);
+    if (!profile) return next(errors.processReq);
 
     profile.instruments.push(req.body);
 
@@ -31,11 +30,11 @@ router.delete(
   myAsync(async (req, res, next) => {
     let profile = await Profile.findOne({ user: req.user.id });
 
-    if (!profile) next(errors.processReq);
+    if (!profile) return next(errors.processReq);
 
     let instrument = profile.instruments.id(req.params.instrumentId);
 
-    if (!instrument) next(errors.processReq);
+    if (!instrument) return next(errors.processReq);
 
     instrument.remove();
 
@@ -51,13 +50,12 @@ router.put(
     console.log(req.body);
     const { error } = validateInstrument(req.body);
     if (error) {
-      res.status(400).send(error.details[0].message);
-      next();
+      return res.status(400).send(error.details[0].message);
     }
 
     let profile = await Profile.findOne({ user: req.user.id });
 
-    if (!profile) next(errors.processReq);
+    if (!profile) return next(errors.processReq);
 
     let instrument = profile.instruments.id(req.params.instrumentId);
 

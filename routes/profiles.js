@@ -22,7 +22,7 @@ router.get(
   myAsync(async (req, res, next) => {
     let profile = await Profile.findOne({ user: req.user.id });
 
-    if (!profile) next(errors.processReq);
+    if (!profile) return next(errors.processReq);
 
     res.send(profile);
   })
@@ -41,7 +41,7 @@ router.post(
     let profile = await Profile.findOne({ user: req.user.id });
     // If exists send error
     if (profile) {
-      next(errors.processReq);
+      return next(errors.processReq);
     } else {
       // Create new profile
       profile = new Profile({

@@ -12,10 +12,6 @@ class MyBand extends React.Component {
           btn="Add Band"
           path="/mybands/add-band"
         />
-        <MyBandBody
-          isLoading={this.props.isLoading}
-          mybands={this.props.mybands}
-        />
       </div>
     );
   }
