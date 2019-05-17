@@ -39,15 +39,13 @@ router.post(
 router.delete(
   "/:bandId",
   myAsync(async (req, res, next) => {
-    let profile = await Profile.findOne({ user: req.user.id });
-    console.log(profile);
+    let profile = await Profile.findOneAndUpdate(
+      { user: req.user.id },
+      { $pull: { mybands: req.params.bandId } },
+      { new: true }
+    );
 
-    let band = await Band.findById(req.params.bandId);
-
-    band.remove();
-
-    console.log(band);
-
+    await Band.findByIdAndRemove(req.params.bandId);
     await profile.save();
 
     res.send(profile);

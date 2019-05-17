@@ -136,7 +136,7 @@ export const deleteBand = (id, history) => async dispatch => {
 
   history.push("/mybands");
 
-  dispatch({ type: DELETE_BAND, payload: id });
+  dispatch({ type: FETCH_PROFILE, payload: res.data });
 };
 
 export const isLoading = () => {
