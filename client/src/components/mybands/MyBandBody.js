@@ -5,50 +5,47 @@ import { Link } from "react-router-dom";
 import Spinner from "components/common/Spinner";
 
 const MyBandBody = ({ isLoading, mybands }) => {
+  console.log(mybands);
   if (!mybands) {
     return <Spinner />;
   }
 
-  const content = mybands.map(exp => {
+  const content = mybands.map(band => {
     return (
-      <section className="section" key={exp._id}>
+      <section className="section" key={band._id}>
         <div>
-          <h1 className="title">{empty(exp.bandname)}</h1>
+          <h1 className="title">{empty(band.bandname)}</h1>
           <div className="content-info">
             <div>Band Website:</div>
-            <a href={empty(exp.bandwebsite)} style={{ marginLeft: "15px" }}>
-              {empty(exp.bandwebsite)}
+            <a href={empty(band.bandwebsite)} style={{ marginLeft: "15px" }}>
+              {empty(band.bandwebsite)}
             </a>
           </div>
           <div className="content-info">
-            <div>Time with band:</div>
-            <span>{empty(exp.timeplayedwith)}</span>
-          </div>
-          <div className="content-info">
-            <div>Instruments Played:</div>
-            <span>
-              {empty(
-                exp.instrumentsplayed.map(ins => capitalize(ins)).join(", ")
-              )}
-            </span>
+            <div>Genre:</div>
+            <span>{empty(band.genre)}</span>
           </div>
           <div className="content-info">
             <div>Description:</div>
-            <span>{empty(exp.description)}</span>
+            <span>{empty(band.description)}</span>
           </div>
           <div className="content-info">
-            <div>Current:</div>
-            <span>{empty(exp.current.toString())}</span>
+            <div>Current Members:</div>
+            <span>{empty(band.currentmembers)}</span>
+          </div>
+          <div className="content-info">
+            <div>Looking for:</div>
+            <span>{empty(band.lookingfor)}</span>
           </div>
         </div>
         <Link
-          to={`/mybands/delete/${exp._id}`}
+          to={`/mybands/delete/${band._id}`}
           className="button is-danger is-small button-delete"
         >
           Delete
         </Link>
         <Link
-          to={`/mybands/edit/${exp._id}`}
+          to={`/mybands/edit/${band._id}`}
           className="button is-info is-small"
         >
           Edit

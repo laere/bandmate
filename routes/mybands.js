@@ -15,17 +15,22 @@ router.post(
       return res.status(400).send(error.details[0].message);
     }
 
-    let profile = await Profile.findOne({ user: req.user.id });
+    let profile = await Profile.findOne({ user: req.user.id }).populate(
+      "mybands"
+    );
 
     if (!profile) return next(errors.processReq);
 
     let band = new Band({
-      ...req.body
+      ...req.body,
+      creator: profile._id
     });
 
     await band.save();
 
     profile.mybands.push(band);
+
+    await profile.save();
 
     res.send(profile);
   })
@@ -35,12 +40,13 @@ router.delete(
   "/:bandId",
   myAsync(async (req, res, next) => {
     let profile = await Profile.findOne({ user: req.user.id });
+    console.log(profile);
 
-    if (!profile) return next(errors.processReq);
+    let band = await Band.findById(req.params.bandId);
 
-    let experience = profile.experience.id(req.params.bandId);
+    band.remove();
 
-    experience.remove();
+    console.log(band);
 
     await profile.save();
 

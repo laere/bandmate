@@ -2,10 +2,8 @@ const educationValidation = values => {
   let errors = {};
 
   const required = (val, key, name, valLen) => {
-    if (!valLen) {
-      if (!val) {
-        errors[key] = `${name} is required.`;
-      }
+    if (!valLen && !val) {
+      errors[key] = `${name} is required.`;
     }
 
     if (!val) {
@@ -20,8 +18,6 @@ const educationValidation = values => {
   required(values.fieldofstudy, "fieldofstudy", "Field of study", 2);
   required(values.description, "description", "Description", 2);
   required(values.from, "from", "From");
-
-  console.log(errors);
 
   return errors;
 };

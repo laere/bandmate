@@ -1,35 +1,10 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const genreSchema = new Schema({
-  name: {
-    type: String,
-    minlength: 2,
-    maxlength: 50,
-    required: true
-  }
-});
-
-const lookingforSchema = new Schema({
-  instrumentplayer: {
-    type: String,
-    minlength: 2,
-    maxlength: 50,
-    required: true
-  },
-  experience: {
-    type: String,
-    minlength: 2,
-    maxlength: 50,
-    required: true
-  },
-  genresplayed: [genreSchema]
-});
-
 const bandSchema = new Schema({
   creator: {
     type: Schema.Types.ObjectId,
-    ref: "User"
+    ref: "Profile"
   },
   bandname: {
     type: String,
@@ -55,13 +30,12 @@ const bandSchema = new Schema({
     maxlength: 255,
     required: true
   },
-  lookingfor: [lookingforSchema],
-  currentmembers: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "User"
-    }
-  ],
+  lookingfor: {
+    type: String,
+    minlength: 2,
+    maxlength: 255
+  },
+  currentmembers: [],
   datecreated: {
     type: Date,
     default: Date.now

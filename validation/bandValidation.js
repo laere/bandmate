@@ -17,7 +17,10 @@ function validateBand(band) {
       description: Joi.string()
         .min(2)
         .max(255)
-        .required()
+        .required(),
+      lookingfor: Joi.string()
+        .min(2)
+        .max(255)
     })
     .unknown();
 

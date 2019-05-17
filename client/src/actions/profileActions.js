@@ -3,7 +3,8 @@ import {
   IS_LOADING,
   FETCH_PROFILE,
   SET_PROFILE,
-  CLEAR_CURRENT_PROFILE
+  CLEAR_CURRENT_PROFILE,
+  DELETE_BAND
 } from "actions/types";
 
 export const fetchProfile = () => async dispatch => {
@@ -120,6 +121,22 @@ export const createBand = (userData, history) => async dispatch => {
   history.push("/mybands");
 
   dispatch({ type: FETCH_PROFILE, payload: res.data });
+};
+
+export const editBand = (userData, id, history) => async dispatch => {
+  const res = await axios.put(`/api/profiles/mybands/${id}`, userData);
+
+  history.push("/mybands");
+
+  dispatch({ type: FETCH_PROFILE, payload: res.data });
+};
+
+export const deleteBand = (id, history) => async dispatch => {
+  const res = await axios.delete(`/api/profiles/mybands/${id}`);
+
+  history.push("/mybands");
+
+  dispatch({ type: DELETE_BAND, payload: id });
 };
 
 export const isLoading = () => {

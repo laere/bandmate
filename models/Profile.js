@@ -167,7 +167,7 @@ const profileSchema = new Schema({
   instruments: [instrumentSchema], // schema
   experience: [experienceSchema], // schema
   education: [educationSchema], // schema
-  mybands: [],
+  mybands: [{ type: Schema.Types.ObjectId, ref: "Band" }],
   social: socialSchema,
   datecreated: {
     type: Date,

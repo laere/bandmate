@@ -4,10 +4,8 @@ const bandValidation = values => {
   let errors = {};
 
   const required = (val, key, name, valLen) => {
-    if (!valLen) {
-      if (!val) {
-        errors[key] = `${name} is required.`;
-      }
+    if (!valLen && !val) {
+      errors[key] = `${name} is required.`;
     }
 
     if (!val) {
@@ -21,13 +19,10 @@ const bandValidation = values => {
     }
   };
 
-  if (values.bandwebsite.length < 2) {
-    errors.bandwebsite = `Band Website must be at least 2 characters long.`;
-  }
-
   required(values.bandname, "bandname", "Band name", 2);
   required(values.genre, "genre", "Genre", 2);
   required(values.description, "description", "Description", 2);
+  required(values.lookingfor, "lookingfor", "Looking for", 2);
 
   return errors;
 };

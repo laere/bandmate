@@ -20,7 +20,11 @@ router.get(
 router.get(
   "/",
   myAsync(async (req, res, next) => {
-    let profile = await Profile.findOne({ user: req.user.id });
+    let profile = await Profile.findOne({ user: req.user.id }).populate(
+      "mybands"
+    );
+
+    console.log(profile);
 
     if (!profile) return next(errors.processReq);
 

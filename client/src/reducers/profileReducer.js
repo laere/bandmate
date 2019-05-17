@@ -1,7 +1,8 @@
 import {
   IS_LOADING,
   FETCH_PROFILE,
-  CLEAR_CURRENT_PROFILE
+  CLEAR_CURRENT_PROFILE,
+  DELETE_BAND
 } from "actions/types";
 
 const initialState = {
