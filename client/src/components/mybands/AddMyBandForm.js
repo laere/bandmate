@@ -26,13 +26,27 @@ class AddMyBandForm extends React.Component {
             this.props.createBand(values, this.props.history);
           }}
         >
-          {({ isSubmitting, handleChange, values }) => (
+          {({ isSubmitting, handleChange, values, setFieldValue }) => (
             <Form>
               <label className="label">*Band Name:</label>
               <Field type="text" name="bandname" className="input" />
               <ErrorMessage
                 className="help is-danger"
                 name="bandname"
+                component="div"
+                style={{ fontSize: "16px" }}
+              />
+              <label className="label">Band Logo/Image:</label>
+              <Field
+                type="file"
+                name="bandimage"
+                onChange={e => {
+                  setFieldValue("file", e.currentTarget.files[0]);
+                }}
+              />
+              <ErrorMessage
+                className="help is-danger"
+                name="bandimage"
                 component="div"
                 style={{ fontSize: "16px" }}
               />

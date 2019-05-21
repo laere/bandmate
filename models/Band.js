@@ -6,6 +6,9 @@ const bandSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Profile"
   },
+  bandimage: {
+    type: String
+  },
   bandname: {
     type: String,
     minlength: 2,

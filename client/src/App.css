@@ -157,3 +157,22 @@
 .content-info span {
   margin-right: 15px;
 }
+
+/**************************************/
+/*********  BANDS LIST
+/**************************************/
+
+.bands-list {
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.card {
+  margin: 0 20px;
+  flex: 1;
+}

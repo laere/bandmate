@@ -15,6 +15,9 @@ const MyBandBody = ({ isLoading, mybands }) => {
       <section className="section" key={band._id}>
         <div>
           <h1 className="title">{empty(band.bandname)}</h1>
+          <figure>
+            <img src={band.bandimage} alt="band image" />
+          </figure>
           <div className="content-info">
             <div>Band Website:</div>
             <a href={empty(band.bandwebsite)} style={{ marginLeft: "15px" }}>
