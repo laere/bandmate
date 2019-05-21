@@ -5,4 +5,4 @@ export const FETCH_PROFILE = "FETCH_PROFILE";
 export const SET_PROFILE = "SET_PROFILE";
 export const CLEAR_CURRENT_PROFILE = "CLEAR_CURRENT_PROFILE";
 
-export const DELETE_BAND = "DELETE_BAND";
+export const FETCH_BANDS = "FETCH_BANDS";

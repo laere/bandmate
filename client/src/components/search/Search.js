@@ -1,7 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
+import { fetchBands } from "actions/bands/bandActions";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 class Search extends React.Component {
+  componentDidMount() {
+    this.props.fetchBands();
+  }
+
   render() {
     return (
       <div>
@@ -37,4 +43,7 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default connect(
+  null,
+  { fetchBands }
+)(Search);

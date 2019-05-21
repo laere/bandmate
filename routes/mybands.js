@@ -74,6 +74,15 @@ router.put(
   })
 );
 
-router.get("/", myAsync(async (req, res, next) => {}));
+router.get(
+  "/",
+  myAsync(async (req, res, next) => {
+    let bands = await Band.find({});
+
+    if (!bands) return next(errors.processReq);
+
+    res.send(bands);
+  })
+);
 
 module.exports = router;

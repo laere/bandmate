@@ -1,15 +1,11 @@
 import axios from "axios";
-import {
-  IS_LOADING,
-  FETCH_PROFILE,
-  SET_PROFILE,
-  CLEAR_CURRENT_PROFILE
-} from "actions/types";
+import { IS_LOADING, FETCH_BANDS } from "actions/types";
+import { isLoading } from "actions/profileActions";
 
 export const fetchBands = () => async dispatch => {
-  // dispatch(isLoading());
+  dispatch(isLoading());
 
   const res = await axios.get("/api/profiles/mybands");
 
-  dispatch({ type: FETCH_PROFILE, payload: res.data });
+  dispatch({ type: FETCH_BANDS, payload: res.data });
 };
