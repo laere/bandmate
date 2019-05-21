@@ -85,4 +85,18 @@ router.get(
   })
 );
 
+// Search query
+router.post(
+  "/search",
+  myAsync(async (req, res, next) => {
+    // req.body will have user search query data
+    console.log(req.body);
+    let bands = await Band.find({ bandname: req.body.bandname });
+
+    if (!bands) return next(errors.processReq);
+
+    res.send(bands);
+  })
+);
+
 module.exports = router;

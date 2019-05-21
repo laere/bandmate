@@ -11,6 +11,7 @@ const bandSchema = new Schema({
   },
   bandname: {
     type: String,
+    text: true,
     minlength: 2,
     maxlength: 50,
     required: true

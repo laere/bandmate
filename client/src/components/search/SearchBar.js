@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchBands } from "actions/bands/bandActions";
+import { fetchBands, searchBands } from "actions/bands/bandActions";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 class SearchBar extends React.Component {
@@ -15,16 +15,21 @@ class SearchBar extends React.Component {
           Find a like-minded band!
         </h3>
         <Formik
-          onSubmit={({ setSubmitting }) => {
+          initialValues={{
+            bandname: ""
+          }}
+          onSubmit={(values, { setSubmitting }) => {
+            console.log("values", values);
             setSubmitting(false);
+            this.props.searchBands(values);
           }}
         >
           {({ isSubmitting }) => (
             <Form className="search-form">
-              <Field type="text" name="search" className="input" />
+              <Field type="text" name="bandname" className="input" />
               <ErrorMessage
                 className="help is-danger"
-                name="search"
+                name="bandname"
                 component="div"
                 style={{ fontSize: "24px" }}
               />
@@ -45,5 +50,5 @@ class SearchBar extends React.Component {
 
 export default connect(
   null,
-  { fetchBands }
+  { fetchBands, searchBands }
 )(SearchBar);
